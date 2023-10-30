@@ -14,19 +14,19 @@ const images = [
   {
     label: "San Francisco – Oakland Bay Bridge, United States",
     imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
+      "https://media.istockphoto.com/id/1035676256/pt/foto/background-of-galaxy-and-stars.jpg?s=612x612&w=0&k=20&c=Dpi4np5MHfIYriR9JDQXqpBAMMt7NV1jnOKuc0hqo1w=",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci alias, fugit sint, rerum totam commodi temporibus neque unde praesentium minus, voluptatem qui assumenda quidem reiciendis illum doloremque amet placeat voluptas.",
   },
   {
     label: "Bird",
     imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
+      "https://revistadigital.com.br/wp-content/uploads/2023/03/Qual-a-maior-galaxia-do-universo-860x487.webp",
   },
   {
     label: "Bali, Indonesia",
     imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
+      "https://i.pinimg.com/originals/ae/c2/de/aec2de91ea0646eaa38b52fe700d6d3c.jpg",
   },
   {
     label: "Goč, Serbia",
@@ -51,7 +51,10 @@ export default function TextMobileStepper() {
   };
 
   return (
-    <Box sx={{ width: "100%", flexGrow: 1 }} className={styles.carousel}>
+    <Box
+      sx={{ flexGrow: 1, marginLeft: 13, marginRight: 13 }}
+      className={styles.carousel}
+    >
       <Paper
         square
         elevation={0}
@@ -72,7 +75,14 @@ export default function TextMobileStepper() {
           flexDirection: "column",
           alignItems: "center",
         }}
+        style={{
+          backgroundImage: `url(${images[activeStep].imgPath})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
       >
+        {images[activeStep].description}
         <Box
           component="img"
           sx={{
@@ -80,7 +90,6 @@ export default function TextMobileStepper() {
             backgroundSize: "contain",
             width: "85%",
           }}
-          src={images[activeStep].imgPath}
           alt={images[activeStep].label}
         />
 
@@ -90,11 +99,18 @@ export default function TextMobileStepper() {
           position="static"
           activeStep={activeStep}
           sx={{ maxWidth: 400, flexGrow: 1 }}
+          style={{
+            width: "100%",
+            color: "white",
+            backgroundColor: "#9b9b9b",
+            maxHeight: "10px",
+          }}
           nextButton={
             <Button
               size="small"
               onClick={handleNext}
               disabled={activeStep === 5}
+              style={{ color: "#fff" }}
             >
               Next
               {theme.direction === "rtl" ? (
@@ -109,6 +125,7 @@ export default function TextMobileStepper() {
               size="small"
               onClick={handleBack}
               disabled={activeStep === 0}
+              style={{ color: "#fff" }}
             >
               {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
