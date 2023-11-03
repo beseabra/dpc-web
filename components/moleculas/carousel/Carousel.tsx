@@ -1,8 +1,5 @@
 "use client";
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
@@ -53,50 +50,15 @@ export default function TextMobileStepper() {
   };
 
   return (
-    <Box
-      sx={{ flexGrow: 1, marginLeft: 13, marginRight: 13, marginTop: 2 }}
-      className={styles.carousel}
-    >
-      <Box
-        sx={{
-          height: 350,
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-        style={{
-          backgroundImage: `url(${images[activeStep].imgPath})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          color: "#fff",
-        }}
+    <div className={styles.carouselContainer}>
+      <div
+        className={styles.carouselImage}
+        style={{ backgroundImage: `url(${images[activeStep].imgPath})` }}
       >
         {images[activeStep].description}
-      </Box>
-      <div style={{}}>
-        {images.map((_, index) => (
-          <span
-            key={index}
-            className={index === activeDot ? "dot active" : "dot"}
-            onClick={() => {
-              setActiveStep(index);
-              setActiveDot(index);
-            }}
-          ></span>
-        ))}
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "gray",
-          width: "100%",
-          height: 50,
-        }}
-      >
+
+      <div className={styles.navigationContainer}>
         <Button
           size="small"
           onClick={handleBack}
@@ -106,29 +68,22 @@ export default function TextMobileStepper() {
           {activeStep > 0 && <KeyboardArrowLeft />}
           Back
         </Button>
-        <Box
-          style={{
-            display: "flex",
-            width: 150,
-            height: 40,
-            alignItems: "center",
-            justifyContent: "space-evenly",
-          }}
-        >
+        <div className={styles.dotsContainer}>
           {images.map((_, index) => (
-            <div
+            <span
               key={index}
-              style={{
-                height: 10,
-                width: 10,
-                borderRadius: "50%",
-                backgroundColor: "#E5E5E5",
-                border: index === activeDot ? "4px solid" : "none",
-                borderColor: index === activeDot ? "#605D5D" : "#E5E5E5",
+              className={
+                index === activeDot
+                  ? `${styles.dot} ${styles.active}`
+                  : styles.dot
+              }
+              onClick={() => {
+                setActiveStep(index);
+                setActiveDot(index);
               }}
-            />
+            ></span>
           ))}
-        </Box>
+        </div>
         <Button
           size="small"
           onClick={handleNext}
@@ -139,6 +94,6 @@ export default function TextMobileStepper() {
           {activeStep < maxSteps - 1 && <KeyboardArrowRight />}
         </Button>
       </div>
-    </Box>
+    </div>
   );
 }

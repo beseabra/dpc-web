@@ -1,6 +1,7 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Carousel from "../../components/carousel/Carousel";
+import Footer from "../../components/moleculas/Footer/Footer";
+import Header from "../../components/moleculas/Header/Header";
+import RecentNews from "../../components/organismo/RecentNews/BodyColumns";
+import Carousel from "../../components/moleculas/carousel/Carousel";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
     <main className={styles.main}>
       <Header />
       <Carousel />
+      <RecentNews />
       <div style={{ height: "35rem" }}></div>
+
       <Footer />
     </main>
   );
