@@ -8,7 +8,7 @@ import styles from "./carousel.module.css";
 const images = [
   {
     imgPath:
-      "https://media.istockphoto.com/id/1035676256/pt/foto/background-of-galaxy-and-stars.jpg?s=612x612&w=0&k=20&c=Dpi4np5MHfIYriR9JDQXqpBAMMt7NV1jnOKuc0hqo1w=",
+      "https://img.freepik.com/fotos-gratis/ceu-estrelado_1048-11828.jpg?w=900&t=st=1699056358~exp=1699056958~hmac=b4676ac22387cebf60bac1c2440c7e8dea3a27e1dc96e9f698333c2a0dfb8001",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci alias, fugit sint, rerum totam commodi temporibus neque unde praesentium minus, voluptatem qui assumenda quidem reiciendis illum doloremque amet placeat voluptas.",
   },

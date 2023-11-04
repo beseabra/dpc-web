@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import FirstColumn from "../../moleculas/FirstColumnBody/FirstColumnBody";
+import SecondColumn from "../../moleculas/SecondColumnBody/SecondColumnBody";
 
 export default function RecentNews() {
   return (
@@ -12,7 +13,7 @@ export default function RecentNews() {
       }}
     >
       <FirstColumn />
-      <Box style={{ backgroundColor: "green" }}>Coluna 2</Box>
+      <SecondColumn />
     </Box>
   );
 }
