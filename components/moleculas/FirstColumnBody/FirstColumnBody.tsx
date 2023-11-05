@@ -7,11 +7,12 @@ export default function FirstColumn() {
     <Box
       style={{
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
         paddingRight: "1rem",
       }}
     >
       <NewInfo />
+      <div style={{ width: "1rem" }}>asda</div>
     </Box>
   );
 }

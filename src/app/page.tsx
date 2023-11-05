@@ -1,6 +1,6 @@
 import Footer from "../../components/moleculas/Footer/Footer";
 import Header from "../../components/moleculas/Header/Header";
-import RecentNews from "../../components/organismo/RecentNews/BodyColumns";
+import RecentNews from "../../components/organismo/BodyColumns/BodyColumns";
 import Carousel from "../../components/moleculas/carousel/Carousel";
 import styles from "./page.module.css";
 
