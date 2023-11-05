@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import FirstColumn from "../../moleculas/FirstColumnBody/FirstColumnBody";
-import SecondColumn from "../../moleculas/SecondColumnBody/SecondColumnBody";
+import FirstColumn from "../../organismo/FirstColumnBody/FirstColumnBody";
+import SecondColumn from "../../organismo/SecondColumnBody/SecondColumnBody";
 
 export default function RecentNews() {
   return (

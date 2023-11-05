@@ -1,6 +1,6 @@
 import Footer from "../../components/moleculas/Footer/Footer";
 import Header from "../../components/moleculas/Header/Header";
-import RecentNews from "../../components/organismo/BodyColumns/BodyColumns";
+import RecentNews from "../../components/templates/BodyColumns/BodyColumns";
 import Carousel from "../../components/moleculas/carousel/Carousel";
 import styles from "./page.module.css";
 
@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <Carousel />
       <RecentNews />
-      <div style={{ height: "35rem" }}></div>
+      <div style={{ height: "5rem" }}></div>
 
       <Footer />
     </main>

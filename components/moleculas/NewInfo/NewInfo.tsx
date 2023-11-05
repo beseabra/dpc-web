@@ -1,8 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
+import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
+import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
+
+const image = { src: "/ps.png", alt: "Picture of the author" };
 
 export default function NewInfo() {
   return (
@@ -13,16 +16,9 @@ export default function NewInfo() {
         backgroundColor: "#F2F2F2",
       }}
     >
-      <Image
-        src="/ps.png"
-        width={350}
-        height={230}
-        alt="Picture of the author"
-      />
+      <ArticleImage src={image.src} alt={image.alt} />
       <Box style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
-        <p style={{ fontSize: 12 }}>
-          <i> Quarta-feira, 09 de Agosto 2023</i>{" "}
-        </p>
+        <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
         <ArticleTitle title="Processo seletivo aberto!" />
         <ArticleDescription
           description={

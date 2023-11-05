@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import NewInfo from "../NewInfo/NewInfo";
+import NewInfo from "../../moleculas/NewInfo/NewInfo";
+import ArticlePostsHome from "../../moleculas/ArticlePostsHome/ArticlePostsHome";
 
 export default function FirstColumn() {
   return (
@@ -12,7 +13,7 @@ export default function FirstColumn() {
       }}
     >
       <NewInfo />
-      <div style={{ width: "1rem" }}>asda</div>
+      <ArticlePostsHome />
     </Box>
   );
 }
