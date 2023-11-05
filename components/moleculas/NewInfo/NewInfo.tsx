@@ -17,7 +17,9 @@ export default function NewInfo() {
       }}
     >
       <ArticleImage src={image.src} alt={image.alt} />
-      <Box style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
+      <Box
+        style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem", width: "50%" }}
+      >
         <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
         <ArticleTitle title="Processo seletivo aberto!" />
         <ArticleDescription

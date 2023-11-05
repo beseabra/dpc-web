@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import styles from "./carousel.module.css";
+import { useState } from "react";
 
 const images = [
   {
@@ -31,8 +32,8 @@ const images = [
 ];
 
 export default function TextMobileStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [activeDot, setActiveDot] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [activeDot, setActiveDot] = useState(0);
   const maxSteps = images.length;
 
   const handleNext = () => {
