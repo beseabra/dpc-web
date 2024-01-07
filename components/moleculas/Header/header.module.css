@@ -19,6 +19,7 @@
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 500;
+  cursor: pointer;
 }
 .modalBackground {
   position: fixed;
@@ -51,7 +52,7 @@
   text-align: center;
 }
 
-.modalContent button {
+.buttonClose {
   background-color: #ff0000;
   color: #fff;
   border: none;
@@ -59,4 +60,23 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
+}
+.buttonOpen {
+  background-color: #32cd32;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.loginComponents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 8rem;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
 }

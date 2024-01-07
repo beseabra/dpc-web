@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./header.module.css";
 import PersonIcon from "@mui/icons-material/Person";
+import { TextField } from "@mui/material";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import styles from "./header.module.css";
 
 export default function Header() {
   const [login, setLogin] = useState(false);
@@ -13,17 +14,22 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (login && !event.target.closest(".modal-content")) {
+      const modalContent = document.querySelector(`.${styles.modalContent}`);
+      if (login && modalContent && !modalContent.contains(event.target)) {
         closeLoginModal();
       }
     };
+  
     if (login) {
       document.addEventListener("click", handleClickOutside);
     }
+  
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [login]);
+  
+  
 
   return (
     <>
@@ -47,17 +53,36 @@ export default function Header() {
           <a className={styles.menuItens} href="/blog">
             PROJETO
           </a>
-          <a className={styles.menuItens} onClick={() => setLogin(true)}>
+          <a className={styles.menuItens} onClick={() => setLogin(true)} >
             <PersonIcon htmlColor="#FFFFFF" />
           </a>
         </div>
       </div>
-      {login && (
-        <div className={styles.modalBackground} onClick={closeLoginModal}>
+      {login && ( 
+        <div className={styles.modalBackground}>
           <div className={styles.modal}>
             <div className={styles.modalContent}>
-              <p>Conteúdo do Modal</p>
-              <button onClick={closeLoginModal}>Fechar</button>
+              <p>Faça seu login:</p>
+              <div className={styles.loginComponents}>
+              <TextField
+                id="outlined-read-only-input"
+                label="E-mail"
+                InputProps={{
+                  readOnly: true,
+                 }}
+              />
+             
+              <TextField
+                id="outlined-password-input"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+              />
+              </div>
+              <div className={styles.buttonContainer} >
+              <button className={styles.buttonOpen}  onClick={closeLoginModal}>Login</button>
+              <button className={styles.buttonClose} onClick={closeLoginModal}>Fechar</button>
+              </div>
             </div>
           </div>
         </div>
