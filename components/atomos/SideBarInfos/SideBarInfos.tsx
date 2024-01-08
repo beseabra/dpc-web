@@ -26,18 +26,19 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             cursor: "pointer",
             textDecoration: "none",
             color: "black",
+            flexWrap:"wrap",
           }}
         >
           <Image
             src={info.imgPath}
             alt="Picture of the author"
-            width={150}
-            height={120}
+            width={500}
+            height={250}
             style={{ backgroundColor: "red", marginTop: "1rem" }}
           />
-          <div style={{ padding: "1rem" }}>
+          <div style={{ padding: "0.5rem" }}>
             <h1 style={{ fontSize: 18, height: "1.2rem" }}>{info.title}</h1>
-            <h6 style={{ fontWeight: 500, margin: " 0" }}>
+            <h6 style={{ fontWeight: 500, margin: "0" }}>
               {info.description}
             </h6>
           </div>

@@ -1,10 +1,10 @@
 "use client";
 import { Box, Grid, MenuItem, Select, TextField } from "@mui/material";
+import { useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
+import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
-import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
-import { useState } from "react";
 
 const articlesPosts = [
   {
@@ -87,7 +87,7 @@ export default function ArticlePostsHome() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredArticles, setFilteredArticles] = useState(articlesPosts);
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
 
   const totalItems = filteredArticles.length;
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);

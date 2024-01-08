@@ -1,8 +1,7 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import SideBar from "../../atomos/SideBarTitle/SideBar";
-import SideBarInfos from "../../atomos/SideBarInfos/SideBarInfos";
 import Evaluation from "../../atomos/Evaluation/Evaluation";
+import SideBarInfos from "../../atomos/SideBarInfos/SideBarInfos";
+import SideBar from "../../atomos/SideBarTitle/SideBar";
 
 const nossoInstagram = [
   {
@@ -51,11 +50,11 @@ const nossosEventos = [
 
 export default function SecondColumn() {
   return (
-    <Box
+    <div
       style={{
         display: "flex",
         flexDirection: "column",
-        marginRight: "1rem ",
+        overflow:"hidden"
       }}
     >
       <SideBar title="NOSSO INSTAGRAM" />
@@ -66,6 +65,6 @@ export default function SecondColumn() {
       <Box style={{ height: "1rem" }} />
       <SideBar title="AVALIE NOSSO CONTEÚDO" />
       <Evaluation />
-    </Box>
+    </div>
   );
 }

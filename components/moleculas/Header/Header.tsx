@@ -19,17 +19,15 @@ export default function Header() {
         closeLoginModal();
       }
     };
-  
+
     if (login) {
       document.addEventListener("click", handleClickOutside);
     }
-  
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [login]);
-  
-  
 
   return (
     <>
@@ -53,35 +51,43 @@ export default function Header() {
           <a className={styles.menuItens} href="/blog">
             PROJETO
           </a>
-          <a className={styles.menuItens} onClick={() => setLogin(true)} >
+          <a className={styles.menuItens} onClick={() => setLogin(true)}>
             <PersonIcon htmlColor="#FFFFFF" />
           </a>
         </div>
       </div>
-      {login && ( 
+      {login && (
         <div className={styles.modalBackground}>
           <div className={styles.modal}>
+            <div className={styles.buttonContainerClose}>
+              <button className={styles.buttonClose} onClick={closeLoginModal}>
+                X
+              </button>
+            </div>
             <div className={styles.modalContent}>
               <p>Faça seu login:</p>
               <div className={styles.loginComponents}>
-              <TextField
-                id="outlined-read-only-input"
-                label="E-mail"
-                InputProps={{
-                  readOnly: true,
-                 }}
-              />
-             
-              <TextField
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-              />
+                <TextField
+                  id="outlined-read-only-input"
+                  label="E-mail"
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  variant="filled"
+                />
+
+                <TextField
+                  id="outlined-password-input"
+                  label="Password"
+                  type="password"
+                  autoComplete="current-password"
+                  variant="filled"
+                />
               </div>
-              <div className={styles.buttonContainer} >
-              <button className={styles.buttonOpen}  onClick={closeLoginModal}>Login</button>
-              <button className={styles.buttonClose} onClick={closeLoginModal}>Fechar</button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.buttonOpen} onClick={closeLoginModal}>
+                  Login
+                </button>
               </div>
             </div>
           </div>

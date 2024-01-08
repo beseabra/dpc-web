@@ -1,4 +1,3 @@
-import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 
 interface SideBarProps {
@@ -10,13 +9,15 @@ export default function SideBar({ title }: SideBarProps) {
     <div
       style={{
         backgroundColor: "#F19800",
-        height: "3rem",
-        width: "100%",
+        minHeight: "3rem",
         justifyContent: "space-between",
         display: "flex",
         alignItems: "center",
         paddingLeft: "1rem",
+        paddingRight: "1rem",
         fontWeight: 600,
+        flexWrap: "wrap",
+        overflow: "auto"
       }}
     >
       {title}

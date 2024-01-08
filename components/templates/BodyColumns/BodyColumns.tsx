@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import FirstColumn from "../../organismo/FirstColumnBody/FirstColumnBody";
 import SecondColumn from "../../organismo/SecondColumnBody/SecondColumnBody";
