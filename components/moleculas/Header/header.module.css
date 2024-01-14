@@ -48,8 +48,11 @@
 }
 
 .modalContent {
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-botton: 1rem;
   text-align: center;
+  margin-botton: 2rem;
 }
 
 .buttonClose {

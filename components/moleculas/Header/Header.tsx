@@ -64,15 +64,21 @@ export default function Header() {
                 X
               </button>
             </div>
+
+            <Image
+              src="/simpleLogo.svg"
+              alt="Picture of the author"
+              width={120}
+              height={120}
+            />
+
             <div className={styles.modalContent}>
               <p>Faça seu login:</p>
               <div className={styles.loginComponents}>
                 <TextField
                   id="outlined-read-only-input"
                   label="E-mail"
-                  InputProps={{
-                    readOnly: true,
-                  }}
+                  type="email"
                   variant="filled"
                 />
 
