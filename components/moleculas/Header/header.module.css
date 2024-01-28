@@ -7,10 +7,12 @@
   background-color: #152440;
   gap: 1rem;
 }
+
 .menu {
   display: flex;
   align-items: center;
 }
+
 .menuItens {
   text-decoration: none;
   color: #fff;
@@ -20,72 +22,4 @@
   font-style: normal;
   font-weight: 500;
   cursor: pointer;
-}
-.modalBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
-
-.modal {
-  background-color: white;
-  width: 20rem;
-  height: 25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  z-index: 101;
-}
-
-.modalContent {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-botton: 1rem;
-  text-align: center;
-  margin-botton: 2rem;
-}
-
-.buttonClose {
-  color: #000;
-  background-color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-.buttonOpen {
-  background-color: #f19800;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-.loginComponents {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 8rem;
-}
-.buttonContainer {
-  display: flex;
-  justify-content: space-evenly;
-}
-.buttonContainerClose {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-  padding-right: 1rem;
 }

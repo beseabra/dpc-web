@@ -1,7 +1,7 @@
 import Footer from "../../components/moleculas/Footer/Footer";
 import Header from "../../components/moleculas/Header/Header";
-import RecentNews from "../../components/templates/BodyColumns/BodyColumns";
 import Carousel from "../../components/moleculas/carousel/Carousel";
+import RecentNews from "../../components/templates/BodyColumns/BodyColumns";
 import styles from "./page.module.css";
 
 export default function Home() {

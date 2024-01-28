@@ -198,6 +198,7 @@ export default function ArticlePostsHome() {
         </Grid>
       </Grid>
       <Grid
+        item
         container
         spacing={2}
         gap={1}
