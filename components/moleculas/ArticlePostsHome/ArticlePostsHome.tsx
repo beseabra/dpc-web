@@ -155,7 +155,7 @@ export default function ArticlePostsHome() {
           style={{ padding: "1rem 0" }}
         >
           <Select
-            value={"age"}
+            value={page}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
             style={{
@@ -180,7 +180,7 @@ export default function ArticlePostsHome() {
           style={{ padding: "1rem 0" }}
         >
           <Select
-            value={"age"}
+            value={page}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
             style={{

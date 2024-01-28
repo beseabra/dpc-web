@@ -1,5 +1,6 @@
 import { TextField } from "@mui/material";
 import Image from "next/image";
+import { GoogleSignInButton } from "../../atomos/AuthButton/AuthButton";
 import styles from "./loginModal.module.css";
 
 interface LoginModalProps {
@@ -13,9 +14,9 @@ export default function LoginModal({
     <div className={styles.modalBackground}>
       <div className={styles.modal}>
         <div className={styles.buttonContainerClose}>
-          <button className={styles.buttonClose} onClick={closeLoginModal}>
+          <div className={styles.buttonClose} onClick={closeLoginModal}>
             X
-          </button>
+          </div>
         </div>
 
         <Image
@@ -39,14 +40,19 @@ export default function LoginModal({
               id="outlined-password-input"
               label="Password"
               type="password"
-              autoComplete="current-password"
+              autoComplete="current-passsword"
               variant="filled"
             />
           </div>
           <div className={styles.buttonContainer}>
+            <text className={styles.newLogin}>
+              Não tem cadastro? cadastre-se
+            </text>
             <button className={styles.buttonOpen} onClick={closeLoginModal}>
-              Login
+              Entrar
             </button>
+
+            <GoogleSignInButton />
           </div>
         </div>
       </div>
