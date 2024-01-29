@@ -1,4 +1,4 @@
-import Styles from "./MagazineDescription.module.css";
+import Styles from "./magazineDescription.module.css";
 
 interface ArticleTitleProps {
   description: string;
