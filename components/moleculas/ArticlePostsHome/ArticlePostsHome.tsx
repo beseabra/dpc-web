@@ -16,6 +16,9 @@ const articlesPosts = [
     image: { src: "/ps.png", alt: "Picture of the author" },
     writer: "Autor1",
     area: "Quimica",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
   {
     id: 2,
@@ -26,6 +29,9 @@ const articlesPosts = [
     image: { src: "/image3.png", alt: "Picture of the author" },
     writer: "Bernardo",
     area: "Matematica",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
   {
     id: 3,
@@ -36,6 +42,9 @@ const articlesPosts = [
     image: { src: "/ps.png", alt: "Picture of the author" },
     writer: "diego",
     area: "Fisica",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
   {
     id: 4,
@@ -46,6 +55,9 @@ const articlesPosts = [
     image: { src: "/ps.png", alt: "Picture of the author" },
     writer: "Pedro",
     area: "Biologia",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
   {
     id: 5,
@@ -56,6 +68,9 @@ const articlesPosts = [
     image: { src: "/ps.png", alt: "Picture of the author" },
     writer: "joao",
     area: "Geografia",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
   {
     id: 6,
@@ -66,6 +81,9 @@ const articlesPosts = [
     image: { src: "/ps.png", alt: "Picture of the author" },
     Writer: "maria",
     area: "Historia",
+    volume: "1",
+    number: "1",
+    year: "2021",
   },
 ];
 
@@ -77,6 +95,9 @@ interface Article {
   image: { src: string; alt: string };
   writer: string;
   area: string;
+  volume: string;
+  number: string;
+  year: string;
 }
 
 function calculateTotalPages(totalItems: number, itemsPerPage: number) {

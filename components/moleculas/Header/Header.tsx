@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import styles from "./header.module.css";
 
-export default function Header() {
+interface HeaderProps {
+  currentPage: string;
+}
+
+export default function Header({ currentPage }: HeaderProps) {
   const [login, setLogin] = useState(false);
   const closeLoginModal = () => {
     setLogin(false);
@@ -37,18 +41,41 @@ export default function Header() {
           alt="Picture of the author"
           width={144}
           height={144}
+          onClick={() => (window.location.href = "/")}
         />
         <div className={styles.menu}>
-          <a className={styles.menuItens} href="/">
+          <a
+            className={styles.menuItens}
+            href="/magazine"
+            style={{
+              fontWeight: currentPage === "magazine" ? "bold" : "normal",
+            }}
+          >
             REVISTA
           </a>
-          <a className={styles.menuItens} href="/about">
+          <a
+            className={styles.menuItens}
+            href="/about"
+            style={{ fontWeight: currentPage === "about" ? "bold" : "normal" }}
+          >
             EXPEDIENTE
           </a>
-          <a className={styles.menuItens} href="/contact">
+          <a
+            className={styles.menuItens}
+            href="/contact"
+            style={{
+              fontWeight: currentPage === "contact" ? "bold" : "normal",
+            }}
+          >
             SUBMISSÃO
           </a>
-          <a className={styles.menuItens} href="/blog">
+          <a
+            className={styles.menuItens}
+            href="/blog"
+            style={{
+              fontWeight: currentPage === "blog" ? "bold" : "normal",
+            }}
+          >
             PROJETO
           </a>
           <a className={styles.menuItens} onClick={() => setLogin(true)}>

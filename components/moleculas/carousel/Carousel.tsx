@@ -1,10 +1,9 @@
 "use client";
-import * as React from "react";
-import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import styles from "./carousel.module.css";
+import Button from "@mui/material/Button";
 import { useState } from "react";
+import styles from "./carousel.module.css";
 
 const images = [
   {
