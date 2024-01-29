@@ -1,3 +1,7 @@
+.containerMagazinePosts {
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
 /* Mobile */
 @media (max-width: 700px) {
 }

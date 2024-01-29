@@ -1,4 +1,6 @@
-import { Button, ButtonGroup } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Button, ButtonGroup, InputAdornment, TextField } from "@mui/material";
+import ArticleListMagazine from "../../moleculas/ArticleListMagazine/ArticleListMagazine";
 import styles from "./magazinePost.module.css";
 
 const articlesPosts = [
@@ -74,9 +76,35 @@ const articlesPosts = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
     date: "Quarta-feira, 09 de Agosto 2023",
     image: { src: "/ps.png", alt: "Picture of the author" },
-    Writer: "maria",
+    writer: "maria",
     area: "Historia",
     volume: "6",
+    number: "1",
+    year: "2021",
+  },
+  {
+    id: 7,
+    title: "Titulo artigo Portugues",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi.",
+    date: "Quarta-feira, 09 de Agosto 2023",
+    image: { src: "/ps.png", alt: "Picture of the author" },
+    writer: "maria",
+    area: "Portugues",
+    volume: "7",
+    number: "1",
+    year: "2021",
+  },
+  {
+    id: 8,
+    title: "Titulo artigo Ingles",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem.",
+    date: "Quarta-feira, 09 de Agosto 2023",
+    image: { src: "/ps.png", alt: "Picture of the author" },
+    writer: "maria",
+    area: "Ingles",
+    volume: "8",
     number: "1",
     year: "2021",
   },
@@ -84,32 +112,49 @@ const articlesPosts = [
 
 export default function MagazinePosts() {
   return (
-    <div className={styles.filter}>
-      <ButtonGroup variant="text" aria-label="text button group">
-        {articlesPosts
-          .filter(
-            (article, index, self) =>
-              self.findIndex((a) => a.year === article.year) === index
-          )
-          .map((article, index) => (
-            <Button key={index}>{article.year}</Button>
-          ))}
-      </ButtonGroup>
-      <ButtonGroup
-        variant="contained"
-        aria-label="outlined primary button group"
-      >
-        {articlesPosts
-          .filter(
-            (article, index, self) =>
-              self.findIndex((a) => a.year === article.year) === index
-          )
-          .map((article, index) => (
-            <Button key={index}>
-              V.{article.volume}, N. {article.number}, {article.year}
-            </Button>
-          ))}
-      </ButtonGroup>
+    <div>
+      <div className={styles.filter}>
+        <ButtonGroup variant="text" aria-label="text button group">
+          {articlesPosts
+            .filter(
+              (article, index, self) =>
+                self.findIndex((a) => a.year === article.year) === index
+            )
+            .map((article, index) => (
+              <Button key={index}>{article.year}</Button>
+            ))}
+        </ButtonGroup>
+        <ButtonGroup
+          variant="contained"
+          aria-label="outlined primary button group"
+        >
+          {articlesPosts
+            .filter(
+              (article, index, self) =>
+                self.findIndex((a) => a.year === article.year) === index
+            )
+            .map((article, index) => (
+              <Button key={index}>
+                V.{article.volume}, N. {article.number}, {article.year}
+              </Button>
+            ))}
+        </ButtonGroup>
+        <div className={styles.inputSearch}>
+          <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Pesquisar artigo"
+          />
+        </div>
+      </div>
+      <div className={styles.containerArticles}>
+        <ArticleListMagazine articlesPosts={articlesPosts} />
+      </div>
     </div>
   );
 }
