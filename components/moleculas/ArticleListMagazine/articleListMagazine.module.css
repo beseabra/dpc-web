@@ -4,3 +4,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.links {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

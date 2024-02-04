@@ -13,3 +13,9 @@
   flex-direction: row-reverse;
   width: 100%;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem;
+}

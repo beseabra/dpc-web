@@ -7,7 +7,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import styles from "./header.module.css";
 
 interface HeaderProps {
-  currentPage: string;
+  currentPage?: string;
 }
 
 export default function Header({ currentPage }: HeaderProps) {

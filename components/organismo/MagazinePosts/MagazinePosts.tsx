@@ -1,114 +1,14 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, ButtonGroup, InputAdornment, TextField } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  InputAdornment,
+  Pagination,
+  TextField,
+} from "@mui/material";
+import { articlesPosts } from "../../list/articlesPosts/articlesPosts";
 import ArticleListMagazine from "../../moleculas/ArticleListMagazine/ArticleListMagazine";
 import styles from "./magazinePost.module.css";
-
-const articlesPosts = [
-  {
-    id: 1,
-    title: "Titulo artigo Quimica",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "Autor1",
-    area: "Quimica",
-    volume: "1",
-    number: "1",
-    year: "2023",
-  },
-  {
-    id: 2,
-    title: "Titulo artigo Matematica",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/image3.png", alt: "Picture of the author" },
-    writer: "Bernardo",
-    area: "Matematica",
-    volume: "2",
-    number: "1",
-    year: "2021",
-  },
-  {
-    id: 3,
-    title: "Titulo artigo Fisica",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "diego",
-    area: "Fisica",
-    volume: "3",
-    number: "1",
-    year: "2023",
-  },
-  {
-    id: 4,
-    title: "Titulo artigo Biologia",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "Pedro",
-    area: "Biologia",
-    volume: "4",
-    number: "1",
-    year: "2021",
-  },
-  {
-    id: 5,
-    title: "Titulo artigo Geografia",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "joao",
-    area: "Geografia",
-    volume: "5",
-    number: "1",
-    year: "2022",
-  },
-  {
-    id: 6,
-    title: "Titulo artigo Historia",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "maria",
-    area: "Historia",
-    volume: "6",
-    number: "1",
-    year: "2021",
-  },
-  {
-    id: 7,
-    title: "Titulo artigo Portugues",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "maria",
-    area: "Portugues",
-    volume: "7",
-    number: "1",
-    year: "2021",
-  },
-  {
-    id: 8,
-    title: "Titulo artigo Ingles",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem.",
-    date: "Quarta-feira, 09 de Agosto 2023",
-    image: { src: "/ps.png", alt: "Picture of the author" },
-    writer: "maria",
-    area: "Ingles",
-    volume: "8",
-    number: "1",
-    year: "2021",
-  },
-];
 
 export default function MagazinePosts() {
   return (
@@ -154,6 +54,9 @@ export default function MagazinePosts() {
       </div>
       <div className={styles.containerArticles}>
         <ArticleListMagazine articlesPosts={articlesPosts} />
+        <div className={styles.pagination}>
+          <Pagination count={10} color="secondary" />
+        </div>
       </div>
     </div>
   );
