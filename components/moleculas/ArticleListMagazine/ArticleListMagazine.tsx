@@ -17,6 +17,14 @@ interface Article {
   volume: string;
   number: string;
   year: string;
+  version: string;
+  article: string;
+  author: {
+    author: string;
+    descriptionAuthor: string;
+    apresentacaoCoAuthor: string;
+    emailAuthor: string;
+  };
 }
 
 interface ArticleListMagazineProps {

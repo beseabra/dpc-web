@@ -36,7 +36,9 @@ export default function ArticlePostsHome() {
       return (
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         article.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.writer?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.author.author
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
         article.area.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
