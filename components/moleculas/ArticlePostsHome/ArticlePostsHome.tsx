@@ -140,7 +140,7 @@ export default function ArticlePostsHome() {
         xl={12}
       >
         {paginatedArticles.map((article, index) => (
-          <div key={index} style={{ width: "49%", overflow: "hidden" }}>
+          <div key={index} style={{ width: "20rem" }}>
             <ArticleDate date={article.date} />
             <ArticleTitle title={article.title} />
             <ArticleImage src={article.image.src} alt={article.image.alt} />

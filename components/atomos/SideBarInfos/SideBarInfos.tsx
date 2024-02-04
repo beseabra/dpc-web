@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,12 +15,13 @@ interface SideBarInfosProps {
 
 export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
   const router = useRouter();
+
   return (
-    <>
+    <div>
       {infoslist.map((info, index) => (
         <Link
-          href={info.link}
           key={index}
+          href={info.link}
           style={{
             display: "flex",
             flexDirection: "row",
@@ -29,21 +31,29 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             flexWrap: "wrap",
           }}
         >
-          <Image
-            src={info.imgPath}
-            alt="Picture of the author"
-            layout="responsive"
-            objectFit="contain"
-            width={500}
-            height={250}
-            style={{ marginTop: "1rem" }}
-          />
+          <Box
+            style={{
+              position: "relative",
+              backgroundColor: "red",
+              width: "100%",
+              height: "12rem",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src={info.imgPath}
+              alt="Picture of the author"
+              layout="fill"
+              objectFit="cover"
+              className="center-image"
+            />
+          </Box>
           <div style={{ padding: "0.5rem" }}>
             <h1 style={{ fontSize: 18, height: "1.2rem" }}>{info.title}</h1>
             <h6 style={{ fontWeight: 500, margin: "0" }}>{info.description}</h6>
           </div>
         </Link>
       ))}
-    </>
+    </div>
   );
 }

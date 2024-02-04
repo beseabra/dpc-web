@@ -15,13 +15,7 @@
   padding: 1rem;
   border-radius: 10px;
 }
-.containerReferences {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  background-color: #e6d9c1;
-  padding: 1rem;
-  border-radius: 10px;
-}
+
 .imageProfile {
   display: flex;
   align-items: center;

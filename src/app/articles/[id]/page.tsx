@@ -82,9 +82,7 @@ export default function Articles() {
             </div>
           </Box>
         )}
-        <Box className={styles.containerReferences}>
-          <HowToCite reference={article} />
-        </Box>
+        <HowToCite reference={article} />
       </article>
       <Footer />
     </main>

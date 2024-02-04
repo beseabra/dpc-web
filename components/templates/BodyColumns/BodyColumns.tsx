@@ -7,7 +7,7 @@ export default function RecentNews() {
     <Box
       style={{
         display: "grid",
-        gridTemplateColumns: "2fr 1fr",
+        gridTemplateColumns: "3fr 1fr",
         margin: "1rem 6rem 0 6rem",
       }}
     >
