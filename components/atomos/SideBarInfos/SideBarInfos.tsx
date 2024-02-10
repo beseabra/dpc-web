@@ -36,7 +36,7 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
               position: "relative",
               backgroundColor: "red",
               width: "100%",
-              height: "12rem",
+              height: "8rem",
               overflow: "hidden",
             }}
           >
@@ -49,8 +49,19 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             />
           </Box>
           <div style={{ padding: "0.5rem" }}>
-            <h1 style={{ fontSize: 18, height: "1.2rem" }}>{info.title}</h1>
-            <h6 style={{ fontWeight: 500, margin: "0" }}>{info.description}</h6>
+            <h1 style={{ fontSize: 18, height: "1.2rem", margin: "0.2rem" }}>
+              {info.title}
+            </h1>
+            <h6
+              style={{
+                fontWeight: 500,
+                margin: "0",
+                fontSize: "14",
+                textAlign: "justify",
+              }}
+            >
+              {info.description}
+            </h6>
           </div>
         </Link>
       ))}

@@ -1,11 +1,10 @@
 "use client";
-import { Box, Grid, MenuItem, Select, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
-import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
-import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
-import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
-import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
+import Pagination from "../../atomos/Pagination/Pagination";
+import SearchComponent from "../../atomos/SearchComponent/SerchComponent";
 import { articlesPosts } from "../../list/articlesPosts/articlesPosts";
+import ArticleListMagazine from "../ArticleListMagazine/ArticleListMagazine";
 
 function calculateTotalPages(totalItems: number, itemsPerPage: number) {
   return Math.ceil(totalItems / itemsPerPage);
@@ -19,10 +18,6 @@ export default function ArticlePostsHome() {
 
   const totalItems = filteredArticles.length;
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
-
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -48,129 +43,18 @@ export default function ArticlePostsHome() {
 
   return (
     <Box>
-      <Grid
-        container
-        spacing={2}
-        style={{
-          marginTop: "0.1rem",
-          marginLeft: "0.03rem",
-          paddingRight: "1rem",
-        }}
-      >
-        <Grid
-          item
-          xs={10}
-          sm={8}
-          md={6}
-          lg={6}
-          xl={8}
-          style={{ padding: "1rem 0" }}
-        >
-          <TextField
-            id="outlined-basic"
-            label="Digite uma palavra chave/autor/tema"
-            variant="outlined"
-            style={{ width: "100%", backgroundColor: "white" }}
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-        </Grid>
-        <Grid
-          item
-          xs={7}
-          sm={4}
-          md={4}
-          lg={3}
-          xl={4}
-          style={{ padding: "1rem 0" }}
-        >
-          <Select
-            value={page}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-            style={{
-              width: "100%",
-              backgroundColor: "white",
-              margin: "0",
-              padding: "0",
-            }}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </Grid>
-        <Grid
-          item
-          xs={7}
-          sm={4}
-          md={4}
-          lg={3}
-          xl={4}
-          style={{ padding: "1rem 0" }}
-        >
-          <Select
-            value={page}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-            style={{
-              backgroundColor: "white",
-              width: "100%",
-            }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        spacing={2}
-        gap={1}
-        ml={1}
-        xs={7}
-        sm={10}
-        md={12}
-        lg={12}
-        xl={12}
-      >
-        {paginatedArticles.map((article, index) => (
-          <div key={index} style={{ width: "20rem" }}>
-            <ArticleDate date={article.date} />
-            <ArticleTitle title={article.title} />
-            <ArticleImage src={article.image.src} alt={article.image.alt} />
-            <ArticleDescription description={article.description} />
-          </div>
-        ))}
-      </Grid>
-      <Box style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => handlePageChange(i + 1)}
-              style={{
-                backgroundColor: i + 1 === page ? "lightblue" : "white",
-              }}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-        <div>
-          {page > 1 && (
-            <button onClick={() => handlePageChange(page - 1)}>Anterior</button>
-          )}
-          {page < totalPages && (
-            <button onClick={() => handlePageChange(page + 1)}>Próxima</button>
-          )}
-        </div>
-      </Box>
+      <SearchComponent
+        page={page}
+        setPage={setPage}
+        searchTerm={searchTerm}
+        handleSearchChange={handleSearchChange}
+      />
+      <ArticleListMagazine articlesPosts={articlesPosts} />
+      <Pagination
+        page={page}
+        handlePageChange={handlePageChange}
+        totalPages={totalPages}
+      />
     </Box>
   );
 }

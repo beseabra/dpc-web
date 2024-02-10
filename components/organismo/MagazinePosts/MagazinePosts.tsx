@@ -52,7 +52,7 @@ export default function MagazinePosts() {
           />
         </div>
       </div>
-      <div className={styles.containerArticles}>
+      <div>
         <ArticleListMagazine articlesPosts={articlesPosts} />
         <div className={styles.pagination}>
           <Pagination count={10} color="secondary" />

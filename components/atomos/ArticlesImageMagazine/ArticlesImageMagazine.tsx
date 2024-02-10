@@ -8,8 +8,8 @@ export default function ArticlesImageMagazine({ src, alt }: ArticleImageProps) {
     <div
       aria-label={alt}
       style={{
-        width: "14rem",
-        height: "10rem",
+        width: "11rem",
+        height: "7rem",
         backgroundImage: `url(${src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",

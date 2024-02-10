@@ -9,8 +9,8 @@ export default function SideBar({ title }: SideBarProps) {
     <div
       style={{
         backgroundColor: "#F19800",
-        fontSize: "0.8rem",
-        minHeight: "3rem",
+        fontSize: "0.7rem",
+        minHeight: "2rem",
         justifyContent: "space-between",
         display: "flex",
         alignItems: "center",
@@ -19,6 +19,7 @@ export default function SideBar({ title }: SideBarProps) {
         fontWeight: 600,
         flexWrap: "wrap",
         overflow: "auto",
+        marginBottom: ".5rem",
       }}
     >
       {title}

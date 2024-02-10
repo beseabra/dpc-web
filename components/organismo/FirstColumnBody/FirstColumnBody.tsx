@@ -1,7 +1,6 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import NewInfo from "../../moleculas/NewInfo/NewInfo";
 import ArticlePostsHome from "../../moleculas/ArticlePostsHome/ArticlePostsHome";
+import NewInfo from "../../moleculas/NewInfo/NewInfo";
 
 export default function FirstColumn() {
   return (
@@ -13,6 +12,7 @@ export default function FirstColumn() {
       }}
     >
       <NewInfo />
+
       <ArticlePostsHome />
     </Box>
   );

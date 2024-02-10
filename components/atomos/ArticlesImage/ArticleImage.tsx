@@ -14,6 +14,6 @@ export default function ArticleImage({ src, alt }: ArticleImageProps) {
         backgroundPosition: "center",
         overflow: "hidden",
       }}
-    ></div>
+    />
   );
 }
