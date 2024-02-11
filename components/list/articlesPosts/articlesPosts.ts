@@ -16,7 +16,7 @@ export const articlesPosts = [
     version: "Atualizado em 09 de Agosto 2023",
     author: {
       author: "Autor1",
-      coAuthor: "Autor2",
+      coAuthor: "",
       profileImage: "/user.png",
       profileImageCoAuthor: "/image3.png",
       descriptionAuthor: "Professor de Quimica",

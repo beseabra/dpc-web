@@ -61,7 +61,7 @@ export default function Articles() {
             <h6>Contato: {article?.author.emailAuthor}</h6>
           </div>
         </Box>
-        {article?.author && (
+        {article?.author.coAuthor && (
           <Box className={styles.containerArticleUser}>
             <div className={styles.imageProfile}>
               <Image
@@ -75,10 +75,10 @@ export default function Articles() {
               />
             </div>
             <div>
-              <h3>{article?.author.author}</h3>
-              <h5>{article?.author.descriptionAuthor}</h5>
+              <h3>{article?.author.coAuthor}</h3>
+              <h5>{article?.author.descriptionCoAuthor}</h5>
               <p>{article?.author.apresentacaoCoAuthor}</p>
-              <h6>Contato: {article?.author.emailAuthor}</h6>
+              <h6>Contato: {article?.author.emailCoAuthor}</h6>
             </div>
           </Box>
         )}
