@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

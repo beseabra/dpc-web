@@ -39,4 +39,24 @@ export const collaborator = [
     lattes: "http://lattes.cnpq.br/123456789",
     email: "fsfsdf@fdfds.com",
   },
+  {
+    image: {
+      src: "/user2.png",
+      alt: "user",
+    },
+    name: "John Doe",
+    function: "Editor",
+    lattes: "http://lattes.cnpq.br/123456789",
+    email: "dasda@dasdsa",
+  },
+  {
+    image: {
+      src: "/user3.png",
+      alt: "user",
+    },
+    name: "John Doe",
+    function: "Editor",
+    lattes: "http://lattes.cnpq.br/123456789",
+    email: "dfsdf@sadad.com",
+  },
 ];
