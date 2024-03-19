@@ -2,7 +2,10 @@
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 import { useState } from "react";
+import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
+import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import { images } from "../../list/carousel/carousel";
 import styles from "./carousel.module.css";
 
@@ -31,7 +34,13 @@ export default function TextMobileStepper() {
         className={styles.carouselImage}
         style={{ backgroundImage: `url(${images[activeStep].imgPath})` }}
       >
-        {images[activeStep].description}
+        <div className={styles.textContainer}>
+          <ArticleTitle title={images[activeStep].title} />
+          <ArticleDate date={images[activeStep].description} />
+          <Link className={styles.textButton} href={images[activeStep].link}>
+            {images[activeStep].buttonText}
+          </Link>
+        </div>
       </div>
 
       <div className={styles.navigationContainer}>
@@ -42,7 +51,7 @@ export default function TextMobileStepper() {
           style={{ color: "#fff" }}
         >
           {activeStep > 0 && <KeyboardArrowLeft />}
-          Back
+          Anterior
         </Button>
         <div className={styles.dotsContainer}>
           {images.map((_, index) => (
@@ -66,7 +75,7 @@ export default function TextMobileStepper() {
           disabled={activeStep === maxSteps - 1}
           style={{ color: "#fff" }}
         >
-          Next
+          Próximo
           {activeStep < maxSteps - 1 && <KeyboardArrowRight />}
         </Button>
       </div>

@@ -71,9 +71,9 @@ export default function Header({ currentPage }: HeaderProps) {
           </a>
           <a
             className={styles.menuItens}
-            href="/blog"
+            href="/project"
             style={{
-              fontWeight: currentPage === "blog" ? "bold" : "normal",
+              fontWeight: currentPage === "project" ? "bold" : "normal",
             }}
           >
             PROJETO
