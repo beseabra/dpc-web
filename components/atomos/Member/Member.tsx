@@ -32,7 +32,6 @@ export default function Member({ collaborator }: MemberProps) {
             alt={collab.image.alt}
             width={125}
             height={125}
-            layout="fixed"
             objectFit="cover"
             style={{ borderRadius: "50%" }}
           />

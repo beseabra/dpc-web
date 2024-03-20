@@ -26,7 +26,6 @@ export default function Articles() {
                 alt={article.image.alt}
                 width={1}
                 height={1}
-                layout="responsive"
                 objectFit="contain"
               />
             </Box>
@@ -49,7 +48,6 @@ export default function Articles() {
               alt="user"
               width={200}
               height={200}
-              layout="fixed"
               objectFit="cover"
               style={{ borderRadius: "50%" }}
             />
@@ -69,7 +67,6 @@ export default function Articles() {
                 alt="user"
                 width={200}
                 height={200}
-                layout="fixed"
                 objectFit="cover"
                 style={{ borderRadius: "50%" }}
               />

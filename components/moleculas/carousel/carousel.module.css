@@ -15,7 +15,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: #fff;
+  color: var(--text-color-secondary);
 }
 
 .textContainer {
@@ -23,7 +23,7 @@
 }
 
 .textButton {
-  color: #f19800;
+  color: var(--secondary-color);
 }
 
 .dotsContainer {
@@ -35,7 +35,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #e5e5e5;
+  background-color: var(--text-color-secondary);
   margin: 0 4px;
   cursor: pointer;
 }
@@ -65,6 +65,6 @@
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background-color: #e5e5e5;
+  background-color: var(--text-color-secondary);
   border: none;
 }

@@ -48,7 +48,7 @@ export default function TextMobileStepper() {
           size="small"
           onClick={handleBack}
           disabled={activeStep === 0}
-          style={{ color: "#fff" }}
+          style={{ color: "var(--text-color-secondary)" }}
         >
           {activeStep > 0 && <KeyboardArrowLeft />}
           Anterior
@@ -73,7 +73,7 @@ export default function TextMobileStepper() {
           size="small"
           onClick={handleNext}
           disabled={activeStep === maxSteps - 1}
-          style={{ color: "#fff" }}
+          style={{ color: "var(--text-color-secondary)" }}
         >
           Próximo
           {activeStep < maxSteps - 1 && <KeyboardArrowRight />}

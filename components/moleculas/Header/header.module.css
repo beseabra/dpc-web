@@ -4,7 +4,7 @@
   align-items: center;
   height: 5rem;
   padding: 0 6rem;
-  background-color: #152440;
+  background-color: var(--primary-color);
   gap: 1rem;
 }
 
@@ -15,7 +15,7 @@
 
 .menuItens {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color-secondary);
   margin: 0 1rem;
   font-family: "Roboto", sans-serif;
   font-size: 0.8125rem;

@@ -27,7 +27,7 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             flexDirection: "row",
             cursor: "pointer",
             textDecoration: "none",
-            color: "black",
+            color: "var(--text-color)",
             flexWrap: "wrap",
           }}
         >
@@ -43,9 +43,9 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             <Image
               src={info.imgPath}
               alt="Picture of the author"
-              layout="fill"
               objectFit="cover"
               className="center-image"
+              layout="fill"
             />
           </Box>
           <div style={{ padding: "0.5rem" }}>

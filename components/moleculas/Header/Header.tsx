@@ -79,7 +79,7 @@ export default function Header({ currentPage }: HeaderProps) {
             PROJETO
           </a>
           <a className={styles.menuItens} onClick={() => setLogin(true)}>
-            <PersonIcon htmlColor="#FFFFFF" />
+            <PersonIcon htmlColor="var(--text-color-secondary)" />
           </a>
         </div>
       </div>

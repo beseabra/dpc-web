@@ -8,7 +8,7 @@ export default function SideBar({ title }: SideBarProps) {
   return (
     <div
       style={{
-        backgroundColor: "#F19800",
+        backgroundColor: "var(--secondary-color)",
         fontSize: "0.7rem",
         minHeight: "2rem",
         justifyContent: "space-between",
@@ -23,7 +23,7 @@ export default function SideBar({ title }: SideBarProps) {
       }}
     >
       {title}
-      <PersonIcon htmlColor="#FFFFFF" />
+      <PersonIcon htmlColor="var(--text-color-secondary)" />
     </div>
   );
 }

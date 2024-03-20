@@ -19,7 +19,10 @@ export default function SearchComponent({
         id="outlined-basic"
         label="Digite uma palavra chave/autor/tema"
         variant="outlined"
-        style={{ width: "100%", backgroundColor: "white" }}
+        style={{
+          width: "100%",
+          backgroundColor: "var(--text-color-secondary)",
+        }}
         value={searchTerm}
         onChange={handleSearchChange}
       />
@@ -30,7 +33,7 @@ export default function SearchComponent({
         inputProps={{ "aria-label": "Without label" }}
         style={{
           width: "100%",
-          backgroundColor: "white",
+          backgroundColor: "var(--text-color-secondary)",
           margin: "0",
           padding: "0",
         }}
@@ -45,7 +48,7 @@ export default function SearchComponent({
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
         style={{
-          backgroundColor: "white",
+          backgroundColor: "var(--text-color-secondary)",
           width: "100%",
         }}
       >
