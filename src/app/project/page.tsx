@@ -12,7 +12,7 @@ export default function Project() {
         <div>
           <MagazineTitle title="Sobre a Revista" />
           <p>
-            O "Despertar para a Ciência" é um projeto de extensão da UTFPR-CP
+            O Despertar para a Ciência é um projeto de extensão da UTFPR-CP
             dedicado a fomentar o interesse pela ciência em pessoas de todas as
             idades. Buscamos desmistificar a ciência, tornando-a acessível e
             empolgante. Nossa missão inclui instigar a paixão pela ciência,
@@ -20,12 +20,12 @@ export default function Project() {
             considerar carreiras científicas. Compartilhamos informações
             científicas de maneira simples e envolvente em nossas redes sociais,
             realizamos atividades práticas em escolas e eventos públicos, e
-            desenvolvemos jogos interativos, como o "Bingo Consciência" e o
-            “Passa ou repassa”, para estimular a curiosidade. O Projet é uma
-            jornada emocionante em direção à descoberta e ao aprendizado, com a
-            missão de instigar um futuro mais iluminado pela ciência. Junte-se a
-            nós nessa busca pelo conhecimento científico e na inspiração da
-            próxima geração de cientistas.
+            desenvolvemos jogos interativos, como o Bingo Consciência e o Passa
+            ou repassa, para estimular a curiosidade. O Projet é uma jornada
+            emocionante em direção à descoberta e ao aprendizado, com a missão
+            de instigar um futuro mais iluminado pela ciência. Junte-se a nós
+            nessa busca pelo conhecimento científico e na inspiração da próxima
+            geração de cientistas.
           </p>
         </div>
         <MagazineTitle title="Missão, visão e valores" />
