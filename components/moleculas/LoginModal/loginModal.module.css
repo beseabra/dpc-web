@@ -12,7 +12,7 @@
 }
 
 .modal {
-  background-color: var(--text-color-secondary);
+  background-color: var(--quinary-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,7 +75,7 @@
 }
 
 .newLogin {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   color: var(--text-color);
   cursor: pointer;
   font-weight: bold;

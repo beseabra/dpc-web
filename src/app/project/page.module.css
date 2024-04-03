@@ -5,3 +5,12 @@
   padding-left: 6rem;
   padding-right: 6rem;
 }
+.apresentation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.containerApresentation {
+  display: flex;
+  flex-direction: column;
+}

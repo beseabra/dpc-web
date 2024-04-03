@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
 import MemberProject from "../../../components/atomos/MemberProject/Member";
 import { collaborator } from "../../../components/list/collaborator/collaborator";
@@ -10,7 +11,7 @@ export default function Project() {
       <Header />
       <div className={styles.container}>
         <div>
-          <MagazineTitle title="Sobre a Revista" />
+          <MagazineTitle title="Quem somos?" />
           <p>
             O Despertar para a Ciência é um projeto de extensão da UTFPR-CP
             dedicado a fomentar o interesse pela ciência em pessoas de todas as
@@ -28,20 +29,76 @@ export default function Project() {
             geração de cientistas.
           </p>
         </div>
-        <MagazineTitle title="Missão, visão e valores" />
-        <p>
-          <strong>Missão:</strong> Instigar a paixão pela ciência, especialmente
-          entre jovens e adultos, e inspirar os jovens a considerar carreiras
-          científicas.
-        </p>
-        <p>
-          <strong>Visão:</strong> Ser referência em divulgação científica,
-          fomentando o interesse pela ciência em pessoas de todas as idades.
-        </p>
-        <p>
-          <strong>Valores:</strong> Acessibilidade, empolgação, desmistificação,
-          simplicidade, envolvimento, inspiração e paixão.
-        </p>
+        <MagazineTitle title="Objetivo, missão, visão e valores" />
+        <div className={styles.apresentation}>
+          <Image
+            src={"/alvo.png"}
+            alt={"luneta"}
+            width={140}
+            height={125}
+            objectFit="cover"
+            style={{ borderRadius: "50%" }}
+          />
+          <div className={styles.containerApresentation}>
+            <b>Objetivo</b> Nosso projeto visa despertar o interesse das pessoas
+            pela ciência. Através de ações de extensão, promovemos a divulgação
+            científica de maneira gratuita, acessível e simples. Além disso, o
+            projeto também oferece um ambiente propício para o desenvolvimento
+            da nossa equipe.
+          </div>
+        </div>
+        <div className={styles.apresentation}>
+          <Image
+            src={"/montanha.png"}
+            alt={"luneta"}
+            width={140}
+            height={125}
+            objectFit="cover"
+            style={{ borderRadius: "50%" }}
+          />
+          <div className={styles.containerApresentation}>
+            <b>Missão</b> No Despertar para a Ciência, temos o compromisso de
+            promover ações educativas e de divulgação científica para os
+            estudantes da educação básica e, adicionalmente usuários de redes
+            sociais interessados em consumir e compartilhar informações
+            científicas simples, acessíveis e de qualidade.
+          </div>
+        </div>
+        <div className={styles.apresentation}>
+          <Image
+            src={"/luneta.png"}
+            alt={"luneta"}
+            width={140}
+            height={125}
+            objectFit="cover"
+            style={{ borderRadius: "50%" }}
+          />
+          <div className={styles.containerApresentation}>
+            <b>Visão</b> Nosso projeto visa despertar o interesse das pessoas
+            pela ciência. Através de ações de extensão, promovemos a divulgação
+            científica de maneira gratuita, acessível e simples. Além disso, o
+            projeto também oferece um ambiente propício para o desenvolvimento
+            da nossa equipe.
+          </div>
+        </div>
+        <div className={styles.apresentation}>
+          <Image
+            src={"/maos.png"}
+            alt={"luneta"}
+            width={140}
+            height={125}
+            objectFit="cover"
+            style={{ borderRadius: "50%" }}
+          />
+          <div className={styles.containerApresentation}>
+            <b>Valores</b>Agir com respeito à diversidade, ética, honestidade e
+            transparência; Trabalho em equipe; Compromisso com a ciência e a
+            educação; Valorização dos membros da equipe; Disponibilizar
+            informações de forma simples, acessível e atrativa; Promover
+            oportunidades de aprendizagem para todos; Sentimento de dono
+          </div>
+        </div>
+
         <MagazineTitle title="Nosso time" />
         <MemberProject collaborator={collaborator} />
       </div>
