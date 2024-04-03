@@ -1,4 +1,4 @@
-import styles from "./MagazineTitle.module.css";
+import styles from "./magazineTitle.module.css";
 interface MagazineTitleProps {
   title: string;
 }
