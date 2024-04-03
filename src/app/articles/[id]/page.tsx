@@ -2,6 +2,7 @@
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import CoverArticle from "../../../../components/atomos/CoverArticle/CoverArticle";
 import HowToCite from "../../../../components/atomos/HowToCite/HowToCite";
 import { articlesPosts } from "../../../../components/list/articlesPosts/articlesPosts";
 import Footer from "../../../../components/moleculas/Footer/Footer";
@@ -14,21 +15,16 @@ export default function Articles() {
   const articleId = typeof params.id === "string" ? parseInt(params.id, 10) : 0;
   const article = articlesPosts.find((article) => article.id === articleId);
 
+  console.log(article?.image.src);
+  console.log(article?.author.profileImage);
+
   return (
     <main>
       <Header />
-      <article className={styles.containerArticle}>
+      <div className={styles.containerArticle}>
         {article ? (
           <>
-            <Box className={styles.imageArticleId}>
-              <Image
-                src={article.image.src}
-                alt={article.image.alt}
-                width={1}
-                height={1}
-                objectFit="contain"
-              />
-            </Box>
+            <CoverArticle src={article.image.src} alt={article.image.alt} />
             <p>{article.date}</p>
 
             <h1>{article.title}</h1>
@@ -80,7 +76,7 @@ export default function Articles() {
           </Box>
         )}
         <HowToCite reference={article} />
-      </article>
+      </div>
       <Footer />
     </main>
   );
