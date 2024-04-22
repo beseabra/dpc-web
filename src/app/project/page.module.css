@@ -1,6 +1,9 @@
 .margin {
   margin: 0;
 }
+.justify {
+  text-align: justify;
+}
 .container {
   padding-left: 6rem;
   padding-right: 6rem;

@@ -13,6 +13,7 @@ export default function CoverArticle({ src, alt }: CoverArticleImageProps) {
         backgroundSize: "cover",
         backgroundPosition: "center",
         overflow: "hidden",
+        borderRadius: "0.3rem",
       }}
     />
   );

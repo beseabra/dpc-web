@@ -12,7 +12,7 @@ export default function Project() {
       <div className={styles.container}>
         <div>
           <MagazineTitle title="Quem somos?" />
-          <p>
+          <p className={styles.justify}>
             O Despertar para a Ciência é um projeto de extensão da UTFPR-CP
             dedicado a fomentar o interesse pela ciência em pessoas de todas as
             idades. Buscamos desmistificar a ciência, tornando-a acessível e
