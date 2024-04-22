@@ -56,15 +56,17 @@ export default function Header({ currentPage }: HeaderProps) {
           <a
             className={styles.menuItens}
             href="/presentation"
-            style={{ fontWeight: currentPage === "about" ? "bold" : "normal" }}
+            style={{
+              fontWeight: currentPage === "presentation" ? "bold" : "normal",
+            }}
           >
             EXPEDIENTE
           </a>
           <a
             className={styles.menuItens}
-            href="/contact"
+            href="/submission"
             style={{
-              fontWeight: currentPage === "contact" ? "bold" : "normal",
+              fontWeight: currentPage === "submission" ? "bold" : "normal",
             }}
           >
             SUBMISSÃO

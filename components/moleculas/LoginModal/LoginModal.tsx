@@ -1,9 +1,9 @@
 "use client";
 import { TextField } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { GoogleSignInButton } from "../../atomos/AuthButton/AuthButton";
-import CreateUserModal from "../createUserModal/createUserModal";
 import styles from "./loginModal.module.css";
 
 interface LoginModalProps {
@@ -50,14 +50,9 @@ export default function LoginModal({
               />
             </div>
             <div className={styles.buttonContainer}>
-              <text
-                className={styles.newLogin}
-                onClick={() => {
-                  setOpenCreateUserModal(true);
-                }}
-              >
+              <Link href="/createUser" className={styles.newLogin}>
                 Não tem cadastro? cadastre-se
-              </text>
+              </Link>
 
               <button className={styles.buttonOpen} onClick={closeLoginModal}>
                 Entrar
@@ -68,11 +63,6 @@ export default function LoginModal({
           </div>
         </div>
       </div>
-      {openCreateUserModal && (
-        <CreateUserModal
-          setOpenCreateUserModal={() => setOpenCreateUserModal}
-        />
-      )}
     </>
   );
 }
