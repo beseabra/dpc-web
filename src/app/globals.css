@@ -6,6 +6,7 @@
   --quinary-color: #e5e5e5;
   --text-color: #000;
   --text-color-secondary: #fff;
+  --text-color-tertiary: #7a7c8a;
 }
 @media (prefers-color-scheme: dark) {
   :root {

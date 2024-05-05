@@ -1,9 +1,13 @@
 "use client";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-export default function SubmissionText() {
+interface SubmissionTextProps {
+  onChange: (content: string) => void;
+}
+
+export default function SubmissionText({ onChange }: SubmissionTextProps) {
   const myColors = [
     "purple",
     "#785412",
@@ -39,14 +43,20 @@ export default function SubmissionText() {
     "background",
     "align",
   ];
-  const ReactQuill =
-    typeof window === "object" ? require("react-quill") : () => false;
+
   const [code, setCode] = useState("");
-  const handleProcedureContentChange = (content: any) => {
+
+  useEffect(() => {
+    setCode("");
+  }, []);
+
+  const handleProcedureContentChange = (content: string) => {
     setCode(content);
+    onChange(content);
   };
+
   return (
-    <>
+    <div style={{ marginTop: "1rem" }}>
       <ReactQuill
         theme="snow"
         modules={modules}
@@ -54,7 +64,6 @@ export default function SubmissionText() {
         value={code}
         onChange={handleProcedureContentChange}
       />
-      {code && <div dangerouslySetInnerHTML={{ __html: code }}></div>}
-    </>
+    </div>
   );
 }

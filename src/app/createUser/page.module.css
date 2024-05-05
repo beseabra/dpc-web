@@ -2,3 +2,15 @@
   margin-left: 4rem;
   margin-right: 4rem;
 }
+.container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.containerButton {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
