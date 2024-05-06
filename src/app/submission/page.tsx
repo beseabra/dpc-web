@@ -75,16 +75,6 @@ export default function Submission() {
       </div>
       <TitleReferences />
       <SubmissionText onChange={setRefs} />
-      {article && (
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: article }}></div>
-        </div>
-      )}
-      {refs && (
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: refs }}></div>
-        </div>
-      )}
       <Footer />
     </div>
   );

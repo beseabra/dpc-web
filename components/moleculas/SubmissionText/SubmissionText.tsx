@@ -6,7 +6,6 @@ import "react-quill/dist/quill.snow.css";
 interface SubmissionTextProps {
   onChange: (content: string) => void;
 }
-
 export default function SubmissionText({ onChange }: SubmissionTextProps) {
   const myColors = [
     "purple",
