@@ -1,11 +1,13 @@
-"use client";
-import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+import { Suspense, useState } from "react";
 import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface SubmissionTextProps {
   onChange: (content: string) => void;
 }
+
 export default function SubmissionText({ onChange }: SubmissionTextProps) {
   const myColors = [
     "purple",
@@ -45,10 +47,6 @@ export default function SubmissionText({ onChange }: SubmissionTextProps) {
 
   const [code, setCode] = useState("");
 
-  useEffect(() => {
-    setCode("");
-  }, []);
-
   const handleProcedureContentChange = (content: string) => {
     setCode(content);
     onChange(content);
@@ -56,13 +54,15 @@ export default function SubmissionText({ onChange }: SubmissionTextProps) {
 
   return (
     <div style={{ marginTop: "1rem" }}>
-      <ReactQuill
-        theme="snow"
-        modules={modules}
-        formats={formats}
-        value={code}
-        onChange={handleProcedureContentChange}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ReactQuill
+          theme="snow"
+          modules={modules}
+          formats={formats}
+          value={code}
+          onChange={handleProcedureContentChange}
+        />
+      </Suspense>
     </div>
   );
 }
