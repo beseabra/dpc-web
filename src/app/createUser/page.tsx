@@ -3,9 +3,9 @@ import { useState } from "react";
 import InputForms from "../../../components/atomos/InputForms/InputForms";
 import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../../components/atomos/PinkLine/PinkLine";
+import Button from "../../../components/atomos/button/Button";
 import Footer from "../../../components/moleculas/Footer/Footer";
 import Header from "../../../components/moleculas/Header/Header";
-import Button from "../../../components/moleculas/button/Button";
 import styles from "./page.module.css";
 
 export default function CreateUser() {

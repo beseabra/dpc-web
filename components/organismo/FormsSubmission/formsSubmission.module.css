@@ -1,0 +1,20 @@
+.containerButtons {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 6.5rem;
+  margin-top: 2rem;
+  gap: 1.5rem;
+}
+.pdfContainer {
+  width: 1000px;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerCheck {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem;
+  padding-left: 5.7rem;
+}
