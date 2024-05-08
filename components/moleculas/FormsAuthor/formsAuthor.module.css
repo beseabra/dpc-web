@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+.containerForms {
+  padding: 1rem;
+  padding-left: 6.4rem;
+  padding-right: 6.4rem;
+}
+.containerInputs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0, 8rem;
+  gap: 1rem;
+}
+.buttonAddAuthor {
+  border: none;
+  background-color: var(--color-primary);
+  cursor: pointer;
+}

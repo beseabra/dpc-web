@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+.containerInput {
+  gap: 1rem;
+}
+.containerForms {
+  padding: 1rem;
+  padding-left: 6.4rem;
+  padding-right: 6.4rem;
+}

@@ -1,5 +1,9 @@
 import style from "./titleReferences.module.css";
 
-export default function TitleReferences() {
-  return <div className={style.text}>Referências no formato ABNT:</div>;
+interface TitleReferencesProps {
+  title: string;
+}
+
+export default function TitleReferences({ title }: TitleReferencesProps) {
+  return <div className={style.text}>{title}</div>;
 }

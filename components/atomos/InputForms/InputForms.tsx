@@ -21,7 +21,10 @@ export default function InputForms({
       label={label}
       type={type}
       variant="filled"
-      style={{ width: "100%", marginTop: "1rem" }}
+      style={{
+        width: "100%",
+        marginTop: "1rem",
+      }}
       value={value}
       name={name}
       onChange={(e) => onChange && onChange(e)}
