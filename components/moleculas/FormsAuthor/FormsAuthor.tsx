@@ -4,10 +4,12 @@ import MagazineTitle from "../../atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../atomos/PinkLine/PinkLine";
 import style from "./formsAuthor.module.css";
 
-export default function FormsAuthor() {
-  const [article, setArticle] = useState("");
-  const [refs, setRefs] = useState("");
-  const [infosForms, setInfosForms] = useState({
+interface IFormsAuthor {
+  onSubmit: (authorData: any) => void;
+}
+
+export default function FormsAuthor({ onSubmit }: IFormsAuthor) {
+  const [author, setAuthor] = useState({
     name: "",
     lastName: "",
     email: "",
@@ -17,15 +19,36 @@ export default function FormsAuthor() {
     graduation: "",
     photo: "",
   });
+
+  const [coAuthor, setCoAuthor] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    institution: "",
+    lattes: "",
+    graduation: "",
+    photo: "",
+  });
+
   const [showAdditionalAuthor, setShowAdditionalAuthor] = useState(false);
 
-  const handleChange = (e: any) => {
+  const handleAuthorChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    setInfosForms({ ...infosForms, [name]: value });
+    setAuthor({ ...author, [name]: value });
+  };
+
+  const handleCoAuthorChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+    setCoAuthor({ ...coAuthor, [name]: value });
   };
 
   const handleAddAuthor = () => {
     setShowAdditionalAuthor(true);
+  };
+
+  const handleSubmit = () => {
+    onSubmit({ author, coAuthor });
   };
 
   return (
@@ -51,64 +74,64 @@ export default function FormsAuthor() {
         <InputForms
           label="Nome/Nome Social"
           type=""
-          value={infosForms.name}
+          value={author.name}
           name="name"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
         <InputForms
           label="Sobrenome"
           type=""
-          value={infosForms.lastName}
+          value={author.lastName}
           name="lastName"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
       </div>
       <div className={style.containerInputs}>
         <InputForms
           label="email"
           type=""
-          value={infosForms.email}
+          value={author.email}
           name="email"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
         <InputForms
           label="Telefone"
           type=""
-          value={infosForms.phone}
+          value={author.phone}
           name="phone"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
       </div>
       <div className={style.containerInputs}>
         <InputForms
           label="instituição vinculada"
           type=""
-          value={infosForms.institution}
+          value={author.institution}
           name="institution"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
         <InputForms
           label="Lattes"
           type=""
-          value={infosForms.lattes}
+          value={author.lattes}
           name="lattes"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
       </div>
       <div className={style.containerInputs}>
         <InputForms
           label="Titulação"
           type=""
-          value={infosForms.graduation}
+          value={author.graduation}
           name="graduation"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
         <InputForms
           label="Insira uma foto de perfil"
           type=""
-          value={infosForms.photo}
+          value={author.photo}
           name="photo"
-          onChange={handleChange}
+          onChange={handleAuthorChange}
         />
       </div>
       {showAdditionalAuthor && (
@@ -121,68 +144,69 @@ export default function FormsAuthor() {
             <InputForms
               label="Nome/Nome Social"
               type=""
-              value={infosForms.name}
+              value={coAuthor.name}
               name="name"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
             <InputForms
               label="Sobrenome"
               type=""
-              value={infosForms.lastName}
+              value={coAuthor.lastName}
               name="lastName"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
           </div>
           <div className={style.containerInputs}>
             <InputForms
               label="email"
               type=""
-              value={infosForms.email}
+              value={coAuthor.email}
               name="email"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
             <InputForms
               label="Telefone"
               type=""
-              value={infosForms.phone}
+              value={coAuthor.phone}
               name="phone"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
           </div>
           <div className={style.containerInputs}>
             <InputForms
               label="instituição vinculada"
               type=""
-              value={infosForms.institution}
+              value={coAuthor.institution}
               name="institution"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
             <InputForms
               label="Lattes"
               type=""
-              value={infosForms.lattes}
+              value={coAuthor.lattes}
               name="lattes"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
           </div>
           <div className={style.containerInputs}>
             <InputForms
               label="Titulação"
               type=""
-              value={infosForms.graduation}
+              value={coAuthor.graduation}
               name="graduation"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
             <InputForms
               label="Insira uma foto de perfil"
               type=""
-              value={infosForms.photo}
+              value={coAuthor.photo}
               name="photo"
-              onChange={handleChange}
+              onChange={handleCoAuthorChange}
             />
           </div>
         </>
       )}
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }

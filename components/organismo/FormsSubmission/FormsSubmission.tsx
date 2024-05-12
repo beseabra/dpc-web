@@ -11,6 +11,18 @@ export default function FormsSubmission() {
   const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(false);
 
+  const [submissionData, setSubmissionData] = useState({
+    author: {},
+    article: {
+      title: "",
+      subtitle: "",
+      keywords: "",
+      knowledgeArea: "",
+    },
+  });
+
+  console.log(submissionData);
+
   const handlePrintPdf = () => {
     setOpen(true);
   };
@@ -29,8 +41,16 @@ export default function FormsSubmission() {
 
   return (
     <>
-      <FormsAuthor />
-      <FormsArticle />
+      <FormsAuthor
+        onSubmit={(authorData: any) =>
+          setSubmissionData({ ...submissionData, author: authorData })
+        }
+      />
+      <FormsArticle
+        onChange={(articleData) =>
+          setSubmissionData({ ...submissionData, article: articleData })
+        }
+      />
       <div className={style.containerCheck}>
         <Checkbox
           checked={checked}
@@ -73,7 +93,7 @@ export default function FormsSubmission() {
         >
           <div className={style.pdfContainer}>
             <PDFViewer width="100%" height="100%">
-              <PdfDocument />
+              <PdfDocument article={submissionData.article} />
             </PDFViewer>
           </div>
         </Modal>

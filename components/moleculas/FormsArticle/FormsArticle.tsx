@@ -6,7 +6,16 @@ import TitleReferences from "../../atomos/TitleReferences/TitleReferences";
 import SubmissionText from "../SubmissionText/SubmissionText";
 import style from "./formsArticle.module.css";
 
-export default function FormsArticle() {
+interface IFormsArticle {
+  onChange: (infosForms: {
+    title: string;
+    subtitle: string;
+    keywords: string;
+    knowledgeArea: string;
+  }) => void;
+}
+
+export default function FormsArticle(props: IFormsArticle) {
   const [article, setArticle] = useState("");
   const [refs, setRefs] = useState("");
   const [infosForms, setInfosForms] = useState({
@@ -19,6 +28,8 @@ export default function FormsArticle() {
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setInfosForms({ ...infosForms, [name]: value });
+
+    props.onChange(infosForms);
   };
 
   console.log(infosForms);
@@ -58,6 +69,7 @@ export default function FormsArticle() {
         <TitleReferences title="Corpo do artigo:" />
 
         <SubmissionText onChange={setArticle} />
+        {article && <div dangerouslySetInnerHTML={{ __html: article }}></div>}
       </div>
       <TitleReferences title="Referências no formato ABNT:" />
       <SubmissionText onChange={setRefs} />
