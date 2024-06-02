@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
+import ButtonEdit from "../../atomos/ButtonEdit/ButtonEdit";
+import { user } from "../../list/User/user";
 import { images } from "../../list/carousel/carousel";
 import styles from "./carousel.module.css";
 
@@ -35,7 +37,10 @@ export default function TextMobileStepper() {
         style={{ backgroundImage: `url(${images[activeStep].imgPath})` }}
       >
         <div className={styles.textContainer}>
-          <ArticleTitle title={images[activeStep].title} />
+          <div className={styles.editButtoncontainer}>
+            <ArticleTitle title={images[activeStep].title} />
+            {user === "admin" && <ButtonEdit />}
+          </div>
           <ArticleDate date={images[activeStep].description} />
           <Link className={styles.textButton} href={images[activeStep].link}>
             {images[activeStep].buttonText}

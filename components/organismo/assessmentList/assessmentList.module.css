@@ -1,0 +1,11 @@
+.margin {
+  margin: 0;
+  padding: 0.3rem;
+  margin-left: 0.3rem;
+}
+
+.container {
+  margin-top: 3rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}

@@ -3,6 +3,7 @@
 import PersonIcon from "@mui/icons-material/Person";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { user } from "../../list/User/user";
 import LoginModal from "../LoginModal/LoginModal";
 import styles from "./header.module.css";
 
@@ -44,6 +45,17 @@ export default function Header({ currentPage }: HeaderProps) {
           onClick={() => (window.location.href = "/")}
         />
         <div className={styles.menu}>
+          {user === "admin" && (
+            <a
+              className={styles.menuItens}
+              href="/assessment"
+              style={{
+                fontWeight: currentPage === "assessment" ? "bold" : "normal",
+              }}
+            >
+              AVALIAÇÃO
+            </a>
+          )}
           <a
             className={styles.menuItens}
             href="/magazine"

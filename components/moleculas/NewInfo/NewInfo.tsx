@@ -1,10 +1,11 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
-import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
-import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
-
+import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
+import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
+import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
+import ButtonEdit from "../../atomos/ButtonEdit/ButtonEdit";
+import { user } from "../../list/User/user";
+import styles from "./newInfo.module.css";
 const image = { src: "/ps.png", alt: "Picture of the author" };
 
 export default function NewInfo() {
@@ -20,7 +21,11 @@ export default function NewInfo() {
       <Box
         style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem", width: "50%" }}
       >
-        <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
+        <div className={styles.containerButtonEdit}>
+          <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
+          {user === "admin" && <ButtonEdit />}
+        </div>
+
         <ArticleTitle title="Processo seletivo aberto!" />
         <ArticleDescription
           description={

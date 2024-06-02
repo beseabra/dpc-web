@@ -1,0 +1,12 @@
+.editButton {
+  background-color: var(--secondary-color);
+  color: var(--text-color-primary);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color-secondary);
+}

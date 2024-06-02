@@ -68,3 +68,7 @@
   background-color: var(--text-color-secondary);
   border: none;
 }
+.editButtoncontainer {
+  display: flex;
+  justify-content: space-between;
+}
