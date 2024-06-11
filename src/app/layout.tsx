@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import Footer from "../../components/moleculas/Footer/Footer";
+import Header from "../../components/moleculas/Header/Header";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`}>{children}</body>
+      <body>
+        <Header />
+        <div className={`${montserrat.className} antialiased`}>{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }
