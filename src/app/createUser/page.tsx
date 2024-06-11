@@ -4,8 +4,6 @@ import InputForms from "../../../components/atomos/InputForms/InputForms";
 import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../../components/atomos/PinkLine/PinkLine";
 import Button from "../../../components/atomos/button/Button";
-import Footer from "../../../components/moleculas/Footer/Footer";
-import Header from "../../../components/moleculas/Header/Header";
 import styles from "./page.module.css";
 
 export default function CreateUser() {
@@ -30,7 +28,6 @@ export default function CreateUser() {
 
   return (
     <>
-      <Header />
       <div className={styles.body}>
         <h3>Preencha os campos abaixo para concluir seu cadastro:</h3>
         <div style={{ width: "100%", marginTop: "0.3rem" }}>
@@ -143,7 +140,6 @@ export default function CreateUser() {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

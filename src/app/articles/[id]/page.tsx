@@ -5,8 +5,6 @@ import { useParams } from "next/navigation";
 import CoverArticle from "../../../../components/atomos/CoverArticle/CoverArticle";
 import HowToCite from "../../../../components/atomos/HowToCite/HowToCite";
 import { articlesPosts } from "../../../../components/list/articlesPosts/articlesPosts";
-import Footer from "../../../../components/moleculas/Footer/Footer";
-import Header from "../../../../components/moleculas/Header/Header";
 import styles from "./page.module.css";
 
 export default function Articles() {
@@ -20,7 +18,6 @@ export default function Articles() {
 
   return (
     <main>
-      <Header />
       <div className={styles.containerArticle}>
         {article ? (
           <>
@@ -77,7 +74,6 @@ export default function Articles() {
         )}
         <HowToCite reference={article} />
       </div>
-      <Footer />
     </main>
   );
 }

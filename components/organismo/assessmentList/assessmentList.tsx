@@ -9,7 +9,6 @@ export default function AssessmentList() {
   return (
     <div className={styles.container}>
       <PendingSubmissions />
-
       <ApprovedSubmissions />
     </div>
   );

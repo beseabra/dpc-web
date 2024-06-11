@@ -47,10 +47,6 @@ export default function FormsAuthor({ onSubmit }: IFormsAuthor) {
     setShowAdditionalAuthor(true);
   };
 
-  const handleSubmit = () => {
-    onSubmit({ author, coAuthor });
-  };
-
   return (
     <div className={style.containerForms}>
       <MagazineTitle title="Formulário de submissão" />
@@ -206,7 +202,6 @@ export default function FormsAuthor({ onSubmit }: IFormsAuthor) {
           </div>
         </>
       )}
-      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }

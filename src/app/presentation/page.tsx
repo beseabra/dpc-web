@@ -1,14 +1,11 @@
 import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
 import Member from "../../../components/atomos/Member/Member";
 import { collaborator } from "../../../components/list/collaborator/collaborator";
-import Footer from "../../../components/moleculas/Footer/Footer";
-import Header from "../../../components/moleculas/Header/Header";
 import Contacts from "../../../components/moleculas/contacts/contacts";
 import styles from "./page.module.css";
 export default function Presentation() {
   return (
     <main>
-      <Header />
       <div className={styles.container}>
         <div>
           <MagazineTitle title="Sobre a Revista" />
@@ -25,7 +22,6 @@ export default function Presentation() {
 
         <Contacts />
       </div>
-      <Footer />
     </main>
   );
 }

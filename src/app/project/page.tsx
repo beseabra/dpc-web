@@ -2,13 +2,10 @@ import Image from "next/image";
 import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
 import MemberProject from "../../../components/atomos/MemberProject/Member";
 import { collaborator } from "../../../components/list/collaborator/collaborator";
-import Footer from "../../../components/moleculas/Footer/Footer";
-import Header from "../../../components/moleculas/Header/Header";
 import styles from "./page.module.css";
 export default function Project() {
   return (
     <main>
-      <Header />
       <div className={styles.container}>
         <div>
           <MagazineTitle title="Quem somos?" />
@@ -102,7 +99,6 @@ export default function Project() {
         <MagazineTitle title="Nosso time" />
         <MemberProject collaborator={collaborator} />
       </div>
-      <Footer />
     </main>
   );
 }

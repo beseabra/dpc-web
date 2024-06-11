@@ -22,7 +22,7 @@ export default function SecondColumn() {
       <SideBar title="EVENTOS" />
       <SideBarInfos infoslist={nossosEventos} />
       <Box style={{ height: "1rem" }} />
-      <SideBar title="AVALIE NOSSO CONTEÚDO" />
+      <SideBar title="AVALIE O CONTEÚDO" />
       <Evaluation />
     </div>
   );

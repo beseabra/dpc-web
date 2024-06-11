@@ -23,7 +23,7 @@ export default function SideBar({ title }: SideBarProps) {
       }}
     >
       {title}
-      <PersonIcon htmlColor="var(--text-color-secondary)" />
+      <PersonIcon htmlColor="var(--text-color-secondary)" fontSize="small" />
     </div>
   );
 }

@@ -2,17 +2,17 @@
 
 import PersonIcon from "@mui/icons-material/Person";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { user } from "../../list/User/user";
 import LoginModal from "../LoginModal/LoginModal";
 import styles from "./header.module.css";
 
-interface HeaderProps {
-  currentPage?: string;
-}
-
-export default function Header({ currentPage }: HeaderProps) {
+export default function Header() {
   const [login, setLogin] = useState(false);
+  const pathname = usePathname();
+  console.log("teste", pathname);
+
   const closeLoginModal = () => {
     setLogin(false);
   };
@@ -50,7 +50,7 @@ export default function Header({ currentPage }: HeaderProps) {
               className={styles.menuItens}
               href="/assessment"
               style={{
-                fontWeight: currentPage === "assessment" ? "bold" : "normal",
+                fontWeight: pathname === "/assessment" ? "bold" : "normal",
               }}
             >
               AVALIAÇÃO
@@ -60,7 +60,7 @@ export default function Header({ currentPage }: HeaderProps) {
             className={styles.menuItens}
             href="/magazine"
             style={{
-              fontWeight: currentPage === "magazine" ? "bold" : "normal",
+              fontWeight: pathname === "/magazine" ? "bold" : "normal",
             }}
           >
             REVISTA
@@ -69,7 +69,7 @@ export default function Header({ currentPage }: HeaderProps) {
             className={styles.menuItens}
             href="/presentation"
             style={{
-              fontWeight: currentPage === "presentation" ? "bold" : "normal",
+              fontWeight: pathname === "/presentation" ? "bold" : "normal",
             }}
           >
             EXPEDIENTE
@@ -78,7 +78,7 @@ export default function Header({ currentPage }: HeaderProps) {
             className={styles.menuItens}
             href="/submission"
             style={{
-              fontWeight: currentPage === "submission" ? "bold" : "normal",
+              fontWeight: pathname === "/submission" ? "bold" : "normal",
             }}
           >
             SUBMISSÃO
@@ -87,7 +87,7 @@ export default function Header({ currentPage }: HeaderProps) {
             className={styles.menuItens}
             href="/project"
             style={{
-              fontWeight: currentPage === "project" ? "bold" : "normal",
+              fontWeight: pathname === "/project" ? "bold" : "normal",
             }}
           >
             PROJETO
