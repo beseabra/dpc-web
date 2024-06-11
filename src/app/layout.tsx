@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import Footer from "../../components/moleculas/Footer/Footer";
-import Header from "../../components/moleculas/Header/Header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,10 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div lang="en">
-      <Header />
-      <div className={`${montserrat.className} antialiased`}>{children}</div>
-      <Footer />
-    </div>
+    <html lang="en">
+      <body className={`${montserrat.className} antialiased`}>{children}</body>
+    </html>
   );
 }
