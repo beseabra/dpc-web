@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import InputForms from "../../../components/atomos/InputForms/InputForms";
-import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
-import PinkLine from "../../../components/atomos/PinkLine/PinkLine";
-import Button from "../../../components/atomos/button/Button";
+import InputForms from "../../components/atomos/InputForms/InputForms";
+import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
+import PinkLine from "../../components/atomos/PinkLine/PinkLine";
+import Button from "../../components/atomos/button/Button";
 import styles from "./page.module.css";
 
 export default function CreateUser() {

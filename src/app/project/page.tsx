@@ -1,7 +1,7 @@
 import Image from "next/image";
-import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
-import MemberProject from "../../../components/atomos/MemberProject/Member";
-import { collaborator } from "../../../components/list/collaborator/collaborator";
+import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
+import MemberProject from "../../components/atomos/MemberProject/Member";
+import { collaborator } from "../../components/list/collaborator/collaborator";
 import styles from "./page.module.css";
 export default function Project() {
   return (

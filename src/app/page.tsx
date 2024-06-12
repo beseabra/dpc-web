@@ -1,5 +1,5 @@
-import Carousel from "../../components/moleculas/carousel/Carousel";
-import RecentNews from "../../components/templates/BodyColumns/BodyColumns";
+import Carousel from "../components/moleculas/carousel/Carousel";
+import RecentNews from "../components/templates/BodyColumns/BodyColumns";
 import styles from "./page.module.css";
 
 export default function Home() {

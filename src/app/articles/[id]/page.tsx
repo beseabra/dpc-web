@@ -2,9 +2,9 @@
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import CoverArticle from "../../../../components/atomos/CoverArticle/CoverArticle";
-import HowToCite from "../../../../components/atomos/HowToCite/HowToCite";
-import { articlesPosts } from "../../../../components/list/articlesPosts/articlesPosts";
+import CoverArticle from "../../../components/atomos/CoverArticle/CoverArticle";
+import HowToCite from "../../../components/atomos/HowToCite/HowToCite";
+import { articlesPosts } from "../../../components/list/articlesPosts/articlesPosts";
 import styles from "./page.module.css";
 
 export default function Articles() {

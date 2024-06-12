@@ -1,6 +1,6 @@
-import MagazineDescription from "../../../components/atomos/MagazineDescription/MagazineDescription";
-import MagazineTitle from "../../../components/atomos/MagazineTitle/MagazineTitle";
-import MagazinePosts from "../../../components/organismo/MagazinePosts/MagazinePosts";
+import MagazineDescription from "../../components/atomos/MagazineDescription/MagazineDescription";
+import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
+import MagazinePosts from "../../components/organismo/MagazinePosts/MagazinePosts";
 import styles from "./page.module.css";
 
 export default function magazine() {
