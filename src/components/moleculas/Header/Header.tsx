@@ -11,7 +11,6 @@ import styles from "./header.module.css";
 export default function Header() {
   const [login, setLogin] = useState(false);
   const pathname = usePathname();
-  console.log("teste", pathname);
 
   const closeLoginModal = () => {
     setLogin(false);

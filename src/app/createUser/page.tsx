@@ -1,13 +1,27 @@
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import InputForms from "../../components/atomos/InputForms/InputForms";
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../components/atomos/PinkLine/PinkLine";
-import Button from "../../components/atomos/button/Button";
+import { createAccount } from "../api/actions/authActions";
 import styles from "./page.module.css";
 
+interface InfoUser {
+  name: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  lattes: string;
+  position: string;
+  formation: string;
+  password: string;
+  confirmPassword: string;
+  image: string;
+  institution: string;
+}
+
 export default function CreateUser() {
-  const [infoUser, setInfoUser] = useState({
+  const [infoUser, setInfoUser] = useState<InfoUser>({
     name: "",
     lastName: "",
     email: "",
@@ -21,9 +35,23 @@ export default function CreateUser() {
     institution: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setInfoUser({ ...infoUser, [name]: value });
+    setInfoUser((prevInfoUser) => ({
+      ...prevInfoUser,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    Object.entries(infoUser).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    await createAccount(formData);
   };
 
   return (
@@ -34,111 +62,115 @@ export default function CreateUser() {
           <MagazineTitle title="Pessoais" />
         </div>
         <PinkLine />
-        <div>
-          <InputForms
-            label="Adicione uma foto"
-            type="email"
-            name="image"
-            value={infoUser.image}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.container}>
-          <InputForms
-            label="Nome"
-            type="email"
-            name="name"
-            value={infoUser.name}
-            onChange={handleChange}
-          />
-          <InputForms
-            label="Sobrenome"
-            type="email"
-            name="lastName"
-            value={infoUser.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.container}>
-          <InputForms
-            label="Email"
-            type="email"
-            name="email"
-            value={infoUser.email}
-            onChange={handleChange}
-          />
-          <InputForms
-            label="Telefone"
-            type="email"
-            name="phone"
-            value={infoUser.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ width: "100%", marginTop: "1rem" }}>
-          <MagazineTitle title="Acadêmico" />
-        </div>
-        <PinkLine />
-        <div className={styles.container}>
-          <InputForms
-            label="Lattes"
-            type="Universidade/Instituição"
-            name="lattes"
-            value={infoUser.lattes}
-            onChange={handleChange}
-          />
-          <InputForms
-            label="Universidade/Instituição"
-            type="email"
-            name="institution"
-            value={infoUser.institution}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.container}>
-          <InputForms
-            label="Cargo"
-            type="email"
-            name="position"
-            value={infoUser.position}
-            onChange={handleChange}
-          />
-          <InputForms
-            label="Formação"
-            type="email"
-            name="formation"
-            value={infoUser.formation}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ width: "100%", marginTop: "1rem" }}>
-          <MagazineTitle title="Senha" />
-        </div>
-        <PinkLine />
-        <div className={styles.container}>
-          <InputForms
-            label="Senha"
-            type="password"
-            name="password"
-            value={infoUser.password}
-            onChange={handleChange}
-          />
-          <InputForms
-            label="Confirmar senha"
-            type="password"
-            name="confirmPassword"
-            value={infoUser.confirmPassword}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.containerButton}>
-          <Button text="Cancelar" color="#7A7C8A" />
-          <Button
-            text="Cadastrar"
-            color="#F19800"
-            onClick={() => console.log(infoUser)}
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <InputForms
+              label=""
+              type="file"
+              name="image"
+              value={infoUser.image}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.container}>
+            <InputForms
+              label="Nome"
+              type=""
+              name="name"
+              value={infoUser.name}
+              onChange={handleChange}
+            />
+            <InputForms
+              label="Sobrenome"
+              type=""
+              name="lastName"
+              value={infoUser.lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.container}>
+            <InputForms
+              label="Email"
+              id="email"
+              type="email"
+              name="email"
+              value={infoUser.email}
+              onChange={handleChange}
+            />
+            <InputForms
+              id="phone"
+              label="Telefone"
+              type="phone"
+              name="phone"
+              value={infoUser.phone}
+              onChange={handleChange}
+            />
+          </div>
+          <div style={{ width: "100%", marginTop: "1rem" }}>
+            <MagazineTitle title="Acadêmico" />
+          </div>
+          <PinkLine />
+          <div className={styles.container}>
+            <InputForms
+              id="lattes"
+              label="Lattes"
+              type="Universidade/Instituição"
+              name="lattes"
+              value={infoUser.lattes}
+              onChange={handleChange}
+            />
+            <InputForms
+              id="institution"
+              label="Universidade/Instituição"
+              type=""
+              name="institution"
+              value={infoUser.institution}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.container}>
+            <InputForms
+              id="position"
+              label="Cargo"
+              type=""
+              name="position"
+              value={infoUser.position}
+              onChange={handleChange}
+            />
+            <InputForms
+              id="formation"
+              label="Formação"
+              type=""
+              name="formation"
+              value={infoUser.formation}
+              onChange={handleChange}
+            />
+          </div>
+          <div style={{ width: "100%", marginTop: "1rem" }}>
+            <MagazineTitle title="Senha" />
+          </div>
+          <PinkLine />
+          <div className={styles.container}>
+            <InputForms
+              id="password"
+              label="Senha"
+              type="password"
+              name="password"
+              value={infoUser.password}
+              onChange={handleChange}
+            />
+            <InputForms
+              label="Confirmar senha"
+              type="password"
+              name="confirmPassword"
+              value={infoUser.confirmPassword}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.containerButton}>
+            <button type="submit">Cadastrar</button>
+          </div>
+        </form>
       </div>
     </>
   );

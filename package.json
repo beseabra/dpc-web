@@ -15,11 +15,13 @@
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.16",
     "@mui/styled-engine-sc": "^6.0.0-alpha.4",
+    "@prisma/client": "^5.15.0",
     "@react-oauth/google": "^0.12.1",
     "@react-pdf/renderer": "^3.4.4",
     "@types/react-swipeable-views": "^0.13.4",
     "@types/react-swipeable-views-utils": "^0.13.6",
     "@vercel/postgres": "^0.8.0",
+    "bcrypt": "^5.1.1",
     "next": "14.1.4",
     "next-auth": "^4.24.5",
     "react": "^18",
@@ -29,6 +31,7 @@
     "styled-components": "^6.1.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -36,6 +39,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",
+    "prisma": "^5.15.0",
     "typescript": "^5"
   }
 }
