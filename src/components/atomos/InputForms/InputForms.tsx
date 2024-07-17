@@ -27,7 +27,6 @@ export default function InputForms({
         width: "100%",
         marginTop: "1rem",
       }}
-      value={value || ""}
       name={name}
       onChange={onChange}
     />

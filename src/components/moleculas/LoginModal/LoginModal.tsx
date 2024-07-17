@@ -1,8 +1,8 @@
 "use client";
-import { TextField } from "@mui/material";
+import { login } from "@/app/api/actions/authActions";
+import InputForms from "@/components/atomos/InputForms/InputForms";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { GoogleSignInButton } from "../../atomos/AuthButton/AuthButton";
 import styles from "./loginModal.module.css";
 
@@ -13,7 +13,6 @@ interface LoginModalProps {
 export default function LoginModal({
   onClickClose: closeLoginModal,
 }: LoginModalProps) {
-  const [openCreateUserModal, setOpenCreateUserModal] = useState(false);
   return (
     <>
       <div className={styles.modalBackground}>
@@ -30,37 +29,41 @@ export default function LoginModal({
             width={120}
             height={120}
           />
+          <form action={login}>
+            <div className={styles.modalContent}>
+              <p>Faça seu login:</p>
+              <div className={styles.loginComponents}>
+                <InputForms
+                  id="Email"
+                  type="email"
+                  name="email"
+                  label="Email"
+                />
 
-          <div className={styles.modalContent}>
-            <p>Faça seu login:</p>
-            <div className={styles.loginComponents}>
-              <TextField
-                id="outlined-read-only-input"
-                label="E-mail"
-                type="email"
-                variant="filled"
-              />
+                <InputForms
+                  id="password"
+                  type="password"
+                  name="password"
+                  label="Senha"
+                />
+              </div>
+              <div className={styles.buttonContainer}>
+                <Link
+                  href="/createUser"
+                  className={styles.newLogin}
+                  onClick={closeLoginModal}
+                >
+                  Não tem cadastro? cadastre-se
+                </Link>
 
-              <TextField
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-passsword"
-                variant="filled"
-              />
+                <button className={styles.buttonOpen} type="submit">
+                  Entrar
+                </button>
+
+                <GoogleSignInButton />
+              </div>
             </div>
-            <div className={styles.buttonContainer}>
-              <Link href="/createUser" className={styles.newLogin}>
-                Não tem cadastro? cadastre-se
-              </Link>
-
-              <button className={styles.buttonOpen} onClick={closeLoginModal}>
-                Entrar
-              </button>
-
-              <GoogleSignInButton />
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </>
