@@ -11,7 +11,9 @@ export async function openSessionToken(token: string) {
 export async function createSessionToken(payload = {}) {
   const secret = new TextEncoder().encode(process.env.AUTH_TOKEN);
   const session = await new jose.SignJWT(payload)
-    .setProtectedHeader({ alg: "HS256" })
+    .setProtectedHeader({
+      alg: "HS256",
+    })
     .setExpirationTime("1d")
     .sign(secret);
   const { exp } = await openSessionToken(session);
@@ -21,4 +23,22 @@ export async function createSessionToken(payload = {}) {
     path: "/",
     httpOnly: true,
   });
+}
+
+export async function isSessionValid() {
+  const sessionCookie = cookies().get("session");
+
+  if (sessionCookie) {
+    const { value } = sessionCookie;
+    const { exp } = await openSessionToken(value);
+    const currentDate = new Date().getTime();
+
+    return (exp as number) * 1000 > currentDate;
+  }
+
+  return false;
+}
+
+export function destroySession() {
+  cookies().delete("session");
 }
