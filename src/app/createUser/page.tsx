@@ -1,4 +1,4 @@
-import InputForms from "@/components/atomos/InputForms/InputForms";
+import InputForms from "../../components/atomos/InputForms/InputForms";
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../components/atomos/PinkLine/PinkLine";
 import { createAccount } from "../api/actions/authActions";
