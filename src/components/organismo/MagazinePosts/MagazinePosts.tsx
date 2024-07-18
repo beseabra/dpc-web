@@ -1,3 +1,5 @@
+"use client";
+import useArticles from "@/hooks/useArticles";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
@@ -11,11 +13,17 @@ import ArticleListMagazine from "../../moleculas/ArticleListMagazine/ArticleList
 import styles from "./magazinePost.module.css";
 
 export default function MagazinePosts() {
+  const { articles, loading } = useArticles();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <div className={styles.filter}>
         <ButtonGroup variant="text" aria-label="text button group">
-          {articlesPosts
+          {articlesPosts //atualizar para variavel vindo do banco
             .filter(
               (article, index, self) =>
                 self.findIndex((a) => a.year === article.year) === index
@@ -28,7 +36,7 @@ export default function MagazinePosts() {
           variant="contained"
           aria-label="outlined primary button group"
         >
-          {articlesPosts
+          {articlesPosts //atualizar para variavel vindo do banco
             .filter(
               (article, index, self) =>
                 self.findIndex((a) => a.year === article.year) === index
@@ -53,7 +61,7 @@ export default function MagazinePosts() {
         </div>
       </div>
       <div>
-        <ArticleListMagazine articlesPosts={articlesPosts} />
+        <ArticleListMagazine articlesPosts={articles} />
         <div className={styles.pagination}>
           <Pagination count={10} color="secondary" />
         </div>

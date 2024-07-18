@@ -8,30 +8,22 @@ const publicRouter = [
   "/magazine",
   "/createUser",
   "/articles",
+  "/api/articles",
 ];
 
 export const config = {
-  matcher: "/((?!_next/static|_next/image|favicon.ico).*)",
+  matcher: "/((?!_next/static|_next/image|favicon.ico|/public/ ).*)",
 };
-export async function middleware(req: NextRequest) {
-  console.log("Middleware");
 
+export async function middleware(req: NextRequest) {
   const pathName = req.nextUrl.pathname;
 
   if (publicRouter.includes(pathName)) {
-    console.log("Public route");
-
     return NextResponse.next();
   }
 
   const session = await isSessionValid();
   if (!session) {
-    const isAPIRoute = pathName.startsWith("/api");
-
-    if (isAPIRoute) {
-      return NextResponse.json({ message: "Não autorizado" }, { status: 401 });
-    }
-
     return NextResponse.redirect(new URL("/", req.url));
   }
 

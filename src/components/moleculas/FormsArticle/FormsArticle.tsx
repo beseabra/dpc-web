@@ -32,7 +32,6 @@ export default function FormsArticle(props: IFormsArticle) {
     props.onChange(infosForms);
   };
 
-  console.log(infosForms);
   return (
     <div className={style.containerForms}>
       <MagazineTitle title="Artigo" />

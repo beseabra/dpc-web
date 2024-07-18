@@ -1,4 +1,5 @@
 "use client";
+import useArticles from "@/hooks/useArticles";
 import { Box } from "@mui/material";
 import { useState } from "react";
 import Pagination from "../../atomos/Pagination/Pagination";
@@ -18,6 +19,12 @@ export default function ArticlePostsHome() {
 
   const totalItems = filteredArticles.length;
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
+
+  const { articles, loading } = useArticles();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -49,7 +56,7 @@ export default function ArticlePostsHome() {
         searchTerm={searchTerm}
         handleSearchChange={handleSearchChange}
       />
-      <ArticleListMagazine articlesPosts={articlesPosts} />
+      <ArticleListMagazine articlesPosts={articles} />
       <Pagination
         page={page}
         handlePageChange={handlePageChange}

@@ -1,4 +1,4 @@
-import { Article } from "@mui/icons-material";
+import { Post } from "@prisma/client";
 import Link from "next/link";
 import ArticleDateMagazine from "../../atomos/ArticleDateMagazine/ArticleDateMagazine";
 import ArticleDescriptionMagazine from "../../atomos/ArticleDescriptionMagazine/ArticleDescriptionMagazine";
@@ -6,29 +6,8 @@ import ArticleTitleDescription from "../../atomos/ArticleTitleMagazine/ArticleTi
 import ArticlesImageMagazine from "../../atomos/ArticlesImageMagazine/ArticlesImageMagazine";
 import styles from "./articleListMagazine.module.css";
 
-interface Article {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  image: { src: string; alt: string };
-  writer: string;
-  area: string;
-  volume: string;
-  number: string;
-  year: string;
-  version: string;
-  article: string;
-  author: {
-    author: string;
-    descriptionAuthor: string;
-    apresentacaoCoAuthor: string;
-    emailAuthor: string;
-  };
-}
-
 interface ArticleListMagazineProps {
-  articlesPosts: Article[];
+  articlesPosts: Post[];
 }
 
 export default function ArticleListMagazine({
@@ -39,14 +18,12 @@ export default function ArticleListMagazine({
       {articlesPosts.map((article, index) => (
         <div key={index}>
           <Link href={`/articles/${article.id}`} className={styles.links}>
-            <ArticleDateMagazine date={article.date} />
+            <ArticleDateMagazine date={article.createdAt} />
             <ArticleTitleDescription title={article.title} />
-            <ArticlesImageMagazine
-              src={article.image.src}
-              alt={article.image.alt}
-            />
 
-            <ArticleDescriptionMagazine description={article.description} />
+            <ArticlesImageMagazine src={"/ps.png"} alt={"/ps.png"} />
+
+            <ArticleDescriptionMagazine description={article.content} />
           </Link>
         </div>
       ))}

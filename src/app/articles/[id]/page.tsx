@@ -13,9 +13,6 @@ export default function Articles() {
   const articleId = typeof params.id === "string" ? parseInt(params.id, 10) : 0;
   const article = articlesPosts.find((article) => article.id === articleId);
 
-  console.log(article?.image.src);
-  console.log(article?.author.profileImage);
-
   return (
     <main>
       <div className={styles.containerArticle}>

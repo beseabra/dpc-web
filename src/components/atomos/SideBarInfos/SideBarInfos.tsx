@@ -34,7 +34,6 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
           <Box
             style={{
               position: "relative",
-              backgroundColor: "red",
               width: "100%",
               height: "8rem",
               overflow: "hidden",

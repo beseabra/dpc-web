@@ -3,9 +3,6 @@ import PendingSubmissions from "../../moleculas/PendingSubmissions/pendingSubmis
 import styles from "./assessmentList.module.css";
 
 export default function AssessmentList() {
-  function handleSubmit() {
-    console.log("submit");
-  }
   return (
     <div className={styles.container}>
       <PendingSubmissions />
