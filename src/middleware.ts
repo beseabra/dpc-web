@@ -8,11 +8,10 @@ const publicRouter = [
   "/magazine",
   "/createUser",
   "/articles",
-  "/api/articles",
 ];
 
 export const config = {
-  matcher: "/((?!_next/static|_next/image|favicon.ico|/public/ ).*)",
+  matcher: "/((?!_next/static|_next/image|favicon.ico).*)",
 };
 
 export async function middleware(req: NextRequest) {

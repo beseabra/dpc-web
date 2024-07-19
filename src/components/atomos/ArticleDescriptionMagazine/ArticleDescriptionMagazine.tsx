@@ -7,5 +7,5 @@ interface ArticleTitleProps {
 export default function ArticleDescriptionMagazine({
   description,
 }: ArticleTitleProps) {
-  return <p className={styles.description}>{description}</p>;
+  return <p className={styles.description}>{description}...</p>;
 }

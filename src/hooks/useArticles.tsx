@@ -1,10 +1,10 @@
 "use client";
 
-import { Post } from "@prisma/client";
+import { Article } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 export default function useArticles() {
-  const [articles, setArticles] = useState<Post[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

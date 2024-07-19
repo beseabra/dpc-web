@@ -3,26 +3,7 @@ import { Alert, Box } from "@mui/material";
 import { useRef, useState } from "react";
 import Styles from "./howToCite.module.css";
 
-interface IArtigoReference {
-  title: string;
-  writer: string;
-  date: string;
-  area: string;
-  volume: string;
-  number: string;
-  year: string;
-  version: string;
-  author: {
-    author: string;
-    coAuthor: string;
-  };
-}
-
-interface IHowToCiteProps {
-  reference?: IArtigoReference;
-}
-
-export default function ArtigoReference({ reference }: IHowToCiteProps) {
+export default function ArtigoReference() {
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
   const getCurrentDate = () => {
     const today = new Date();
@@ -32,13 +13,13 @@ export default function ArtigoReference({ reference }: IHowToCiteProps) {
     return `${day}/${month}/${year}`;
   };
 
-  const abntReference = `${reference?.author.author.toUpperCase()}; ${reference?.author.coAuthor.toUpperCase()}. ${
-    reference?.title
-  }. ${reference?.writer}. ${reference?.date}. ${reference?.area}, v. ${
-    reference?.volume
-  }, n. ${reference?.number}, ${reference?.year}. ${
-    reference?.version
-  }. Disponível em: ${currentUrl}. Acesso em: ${getCurrentDate()}.`;
+  //  const abntReference = `${reference?.article.author.toUpperCase()}; ${reference?.author.coAuthor.toUpperCase()}. ${
+  //  reference?.title
+  //}. ${reference?.writer}. ${reference?.date}. ${reference?.area}, v. ${
+  //  reference?.volume
+  //}, n. ${reference?.number}, ${reference?.year}. ${
+  // reference?.version
+  //}. Disponível em: ${currentUrl}. Acesso em: ${getCurrentDate()}.`;
 
   const [isCopied, setIsCopied] = useState(false);
   const textToCopyRef = useRef<HTMLParagraphElement>(null);
@@ -62,7 +43,7 @@ export default function ArtigoReference({ reference }: IHowToCiteProps) {
             <CopyAllOutlinedIcon /> Copiar
           </div>
         </div>
-        <p ref={textToCopyRef}>{abntReference}</p>
+        <p ref={textToCopyRef}>{"abntReference"}</p>
       </Box>
       {isCopied && (
         <Alert severity="success" className={Styles.alert}>
