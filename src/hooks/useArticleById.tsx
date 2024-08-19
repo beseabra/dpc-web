@@ -1,11 +1,19 @@
 "use client";
 
-import { Article } from "@prisma/client";
+import { Article, Comment, User } from "@prisma/client";
 import { useEffect, useState } from "react";
 
+interface ArticleWithDetails extends Article {
+  author: User;
+  comments: Comment[];
+  coAuthors: User[];
+}
+
 export default function useArticle(id: string) {
-  const [article, setArticle] = useState<Article | null>();
-  const [articleById, setArticleById] = useState<Article | null>();
+  const [articles, setArticles] = useState<Article[] | null>(null);
+  const [articleById, setArticleById] = useState<ArticleWithDetails | null>(
+    null
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -17,8 +25,10 @@ export default function useArticle(id: string) {
     fetch(`/api/articles?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setArticle(data.articles);
-        setArticleById(data.articlesById);
+        if (data) {
+          setArticles(data.articles || []);
+          setArticleById(data.articlesById || null);
+        }
         setLoading(false);
       })
       .catch((error) => {
@@ -27,5 +37,5 @@ export default function useArticle(id: string) {
       });
   }, [id]);
 
-  return { article, loading, articleById };
+  return { articles, loading, articleById };
 }

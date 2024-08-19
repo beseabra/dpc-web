@@ -5,17 +5,12 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import CoverArticle from "../../../components/atomos/CoverArticle/CoverArticle";
 import HowToCite from "../../../components/atomos/HowToCite/HowToCite";
-import { articlesPosts } from "../../../components/list/articlesPosts/articlesPosts";
 import styles from "./page.module.css";
 
 export default function Articles() {
   const params = useParams();
 
-  const articleId = typeof params.id === "string" ? parseInt(params.id, 10) : 0;
-  const articles = articlesPosts.find((article) => article.id === articleId);
-
   const { articleById, loading } = useArticleById(String(params.id));
-  console.log(articleById);
 
   return (
     <main>
@@ -50,7 +45,7 @@ export default function Articles() {
             <Box className={styles.containerArticlesUser}>
               <div className={styles.imageProfile}>
                 <Image
-                  src={articles ? articles?.author.profileImage : ""}
+                  src={articleById?.author.image || "/user.png"}
                   alt="user"
                   width={200}
                   height={200}
@@ -59,32 +54,40 @@ export default function Articles() {
                 />
               </div>
               <div>
-                <h3>{articles?.author.author}</h3>
-                <h5>{articles?.author.descriptionAuthor}</h5>
-                <p>{articles?.author.apresentacaoCoAuthor}</p>
-                <h6>Contato: {articles?.author.emailAuthor}</h6>
+                <h3>{articleById?.author.name}</h3>
+                <h5>
+                  {articleById?.author.formation} -{" "}
+                  {articleById?.author.institution}{" "}
+                </h5>
+                <p>{articleById?.author.position}</p>
+                <h6>Contato: {articleById?.author.email}</h6>
               </div>
             </Box>
-            {articles?.author.coAuthor && (
+            {articleById && articleById.coAuthors.length != 0 && (
               <Box className={styles.containerArticlesUser}>
-                <div className={styles.imageProfile}>
-                  <Image
-                    src={articles?.author.profileImageCoAuthor}
-                    alt="user"
-                    width={200}
-                    height={200}
-                    objectFit="cover"
-                    style={{ borderRadius: "50%" }}
-                  />
-                </div>
-                <div>
-                  <h3>{articles?.author.coAuthor}</h3>
-                  <h5>{articles?.author.descriptionCoAuthor}</h5>
-                  <p>{articles?.author.apresentacaoCoAuthor}</p>
-                  <h6>Contato: {articles?.author.emailCoAuthor}</h6>
-                </div>
+                {articleById.coAuthors.map((coAuthor, index) => (
+                  <div key={index} className={styles.imageProfile}>
+                    <Image
+                      src={coAuthor.image || ""}
+                      alt="user"
+                      width={200}
+                      height={200}
+                      objectFit="cover"
+                      style={{ borderRadius: "50%" }}
+                    />
+                    <div>
+                      <h3>{coAuthor.name}</h3>
+                      <h5>
+                        {coAuthor.formation} - {coAuthor.institution}{" "}
+                      </h5>
+                      <p>{coAuthor.position}</p>
+                      <h6>Contato: {coAuthor.email}</h6>
+                    </div>
+                  </div>
+                ))}
               </Box>
             )}
+
             <HowToCite />
           </>
         )}
