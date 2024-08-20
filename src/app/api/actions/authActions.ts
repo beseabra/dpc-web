@@ -14,6 +14,7 @@ export async function createAccount(formData: FormData) {
   const position = formData.get("position") as string;
   const formation = formData.get("formation") as string;
   const institution = formData.get("institution") as string;
+  const image = formData.get("image") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const passwordHash = await bcrypt.hash(password, 10);
@@ -28,6 +29,7 @@ export async function createAccount(formData: FormData) {
       position,
       formation,
       institution,
+      image,
       email,
       password: passwordHash,
       typeUser,

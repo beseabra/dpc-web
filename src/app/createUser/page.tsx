@@ -1,3 +1,4 @@
+import ImagePicker from "@/components/moleculas/ImagePicker/ImagePicker";
 import InputForms from "../../components/atomos/InputForms/InputForms";
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../components/atomos/PinkLine/PinkLine";
@@ -20,6 +21,7 @@ export default function CreateUser() {
             label="Sobrenome"
           />
         </div>
+        <ImagePicker id="profileImage" name="profileImage" label="Foto de Perfil" />
         <div className={styles.container}>
           <InputForms id="Email" type="email" name="email" label="Email" />
           <InputForms id="phone" type="tel" name="phone" label="Telefone" />

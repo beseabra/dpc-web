@@ -14,3 +14,9 @@
   justify-content: center;
   margin-top: 3rem;
 }
+.containerImagePicker{
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
