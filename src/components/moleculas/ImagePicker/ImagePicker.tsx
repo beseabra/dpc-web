@@ -9,6 +9,7 @@ interface ImagePickerProps {
   name: string;
   label: string;
   defaultValue?: string;
+  onImageUpload: (url: string) => void; 
 }
 
 export default function ImagePicker({
@@ -16,6 +17,7 @@ export default function ImagePicker({
   name,
   label,
   defaultValue,
+  onImageUpload,
 }: Readonly<ImagePickerProps>) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [dataUrl, setDataUrl] = useState<string | null>(defaultValue ?? null);
@@ -34,14 +36,14 @@ export default function ImagePicker({
 
   const compressImage = async (file: File) => {
     const options = {
-      maxSizeMB: 1, // Limite máximo de tamanho em MB
-      maxWidthOrHeight: 1024, // Ajuste as dimensões máximas conforme necessário
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1024,
       useWebWorker: true,
     };
     try {
       return await imageCompression(file, options);
     } catch (error) {
-      setError('Error compressing image: ' + error);
+      setError('Erro ao comprimir a imagem: ' + error);
       throw error;
     }
   };
@@ -53,15 +55,11 @@ export default function ImagePicker({
         setDataUrl(url);
       });
 
-      // Iniciar o processo de upload
       setUploading(true);
       setError(null);
 
       try {
         const compressedFile = await compressImage(file);
-
-      
-
         const sanitizedFileName = sanitizeFileName(compressedFile.name);
         const { data, error } = await supabase
           .storage
@@ -75,9 +73,17 @@ export default function ImagePicker({
           throw error;
         }
 
-        console.log('File uploaded successfully:', data);
+        const imageUrl = supabase
+          .storage
+          .from('profileImage')
+          .getPublicUrl(`public/${sanitizedFileName}`).data.publicUrl;
+
+    
+        onImageUpload(imageUrl);
+
+        console.log('Imagem carregada com sucesso:', imageUrl);
       } catch (error: any) {
-        setError('Error uploading file: ' + error.message);
+        setError('Erro ao fazer upload da imagem: ' + error.message);
       } finally {
         setUploading(false);
       }
@@ -96,7 +102,7 @@ export default function ImagePicker({
         accept="image/*"
       />
       
-      {uploading && <p>Uploading...</p>}
+      {uploading && <p>Carregando...</p>}
       {error && <p>{error}</p>}
       
       {dataUrl && (
