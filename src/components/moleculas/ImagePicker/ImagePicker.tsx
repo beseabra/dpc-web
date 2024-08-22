@@ -1,5 +1,6 @@
 "use client";
 import { supabase } from "@/app/api/actions/supabase";
+import { CircularProgress } from "@mui/material";
 import imageCompression from 'browser-image-compression';
 import Image from "next/image";
 import React, { useRef, useState } from "react";
@@ -104,7 +105,7 @@ export default function ImagePicker({
         accept="image/*"
       />
       
-      {uploading && <p>Carregando...</p>}
+      {uploading &&  <CircularProgress />}
       {error && <p>{error}</p>}
       
       {dataUrl && (

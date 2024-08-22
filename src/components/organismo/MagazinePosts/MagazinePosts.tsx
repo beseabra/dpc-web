@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
   ButtonGroup,
+  CircularProgress,
   InputAdornment,
   Pagination,
   TextField,
@@ -16,7 +17,7 @@ export default function MagazinePosts() {
   const { articles, loading } = useArticles();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return  <CircularProgress />;
   }
 
   return (

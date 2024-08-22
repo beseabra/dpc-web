@@ -1,8 +1,10 @@
 "use client";
 import { login } from "@/app/api/actions/authActions";
 import InputForms from "@/components/atomos/InputForms/InputForms";
+import { CircularProgress } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { GoogleSignInButton } from "../../atomos/AuthButton/AuthButton";
 import styles from "./loginModal.module.css";
 
@@ -13,6 +15,20 @@ interface LoginModalProps {
 export default function LoginModal({
   onClickClose: closeLoginModal,
 }: LoginModalProps) {
+const [loading, setLoading] = useState(false);
+const handleLogin = async (event: React.FormEvent) => { 
+event.preventDefault();
+const formData = new FormData(event.target as HTMLFormElement);
+setLoading(true);
+try {
+  await login(formData);
+  setLoading(false);
+  closeLoginModal();
+} catch (error) {
+  alert("Erro ao fazer login, tente novamente");
+}
+}
+
   return (
     <>
       <div className={styles.modalBackground}>
@@ -29,7 +45,7 @@ export default function LoginModal({
             width={120}
             height={120}
           />
-          <form action={login}>
+          <form onSubmit={handleLogin}>
             <div className={styles.modalContent}>
               <p>Faça seu login:</p>
               <div className={styles.loginComponents}>
@@ -59,6 +75,7 @@ export default function LoginModal({
                 <button className={styles.buttonOpen} type="submit">
                   Entrar
                 </button>
+                {loading  && <CircularProgress className={styles.loading}/>}
 
                 <GoogleSignInButton />
               </div>

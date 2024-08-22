@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import dynamic from "next/dynamic";
 import { Suspense, useState } from "react";
 import "react-quill/dist/quill.snow.css";
@@ -54,7 +55,7 @@ export default function SubmissionText({ onChange }: SubmissionTextProps) {
 
   return (
     <div style={{ marginTop: "1rem" }}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={ <CircularProgress />}>
         <ReactQuill
           theme="snow"
           modules={modules}

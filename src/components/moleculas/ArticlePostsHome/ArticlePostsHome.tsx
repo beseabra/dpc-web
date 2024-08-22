@@ -1,6 +1,6 @@
 "use client";
 import useArticles from "@/hooks/useArticles";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import Pagination from "../../atomos/Pagination/Pagination";
 import SearchComponent from "../../atomos/SearchComponent/SerchComponent";
@@ -23,7 +23,7 @@ export default function ArticlePostsHome() {
   const { articles, loading } = useArticles();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return  <CircularProgress />;
   }
 
   const handlePageChange = (newPage: number) => {
