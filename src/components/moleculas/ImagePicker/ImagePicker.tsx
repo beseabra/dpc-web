@@ -10,6 +10,7 @@ interface ImagePickerProps {
   label: string;
   defaultValue?: string;
   onImageUpload: (url: string) => void; 
+  bucketRoute: string;
 }
 
 export default function ImagePicker({
@@ -18,6 +19,7 @@ export default function ImagePicker({
   label,
   defaultValue,
   onImageUpload,
+  bucketRoute,
 }: Readonly<ImagePickerProps>) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [dataUrl, setDataUrl] = useState<string | null>(defaultValue ?? null);
@@ -64,7 +66,7 @@ export default function ImagePicker({
         const { data, error } = await supabase
           .storage
           .from('profileImage') // Nome do bucket
-          .upload(`public/${sanitizedFileName}`, compressedFile, {
+          .upload(`${bucketRoute}${sanitizedFileName}`, compressedFile, {
             cacheControl: '3600',
             upsert: false,
           });

@@ -26,16 +26,14 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
     setInfosForms((prevData) => {
       const updatedData = { ...prevData, [name]: value };
 
-      // Atualize o estado do artigo e chame onChange com os dados atualizados
-      const updatedArticleData: Partial<Article> = {
+      // Atualize o estado e envie os dados para o componente pai
+      onChange({
         title: updatedData.title,
         subtitle: updatedData.subtitle,
-        article: updatedData.article, 
-        keywords: updatedData.keywords.split(',').map(keyword => keyword.trim()), 
+        article: updatedData.article,
+        keywords: updatedData.keywords.split(',').map(keyword => keyword.trim()),
         references: updatedData.refs.split(',').map(ref => ref.trim()),
-      };
-
-      onChange(updatedArticleData);
+      });
 
       return updatedData;
     });
@@ -43,23 +41,20 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
 
   const handleContentChange = (content: string) => {
     setInfosForms((prevData) => {
-      const updatedData = { ...prevData, content };
+      const updatedData = { ...prevData, article: content };
 
-      // Atualize o estado do artigo e chame onChange com os dados atualizados
-      const updatedArticleData: Partial<Article> = {
+      // Atualize o estado e envie os dados para o componente pai
+      onChange({
         title: updatedData.title,
         subtitle: updatedData.subtitle,
-        article: updatedData.content, 
-        keywords: updatedData.keywords.split(',').map(keyword => keyword.trim()), 
+        article: updatedData.article,
+        keywords: updatedData.keywords.split(',').map(keyword => keyword.trim()),
         references: updatedData.refs.split(',').map(ref => ref.trim()),
-      };
-
-      onChange(updatedArticleData);
+      });
 
       return updatedData;
     });
   };
-
 
   return (
     <div className={style.containerForms}>
