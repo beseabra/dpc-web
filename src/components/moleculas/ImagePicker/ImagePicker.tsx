@@ -79,7 +79,7 @@ export default function ImagePicker({
         const imageUrl = supabase
           .storage
           .from('profileImage')
-          .getPublicUrl(`public/${sanitizedFileName}`).data.publicUrl;
+          .getPublicUrl(`public/bannerImages/${sanitizedFileName}`).data.publicUrl;
 
     
         onImageUpload(imageUrl);
