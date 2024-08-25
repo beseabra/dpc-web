@@ -1,10 +1,17 @@
-import PersonIcon from "@mui/icons-material/Person";
+'use client'
+import ModalUpdateSideBar from "@/components/moleculas/ModalUpdateSideBar/ModalUpdateSideBar"
+import PersonIcon from "@mui/icons-material/Person"
+import { Button } from "@mui/material"
+import { useState } from "react"
 
 interface SideBarProps {
-  title: string;
+  title: string
 }
 
 export default function SideBar({ title }: SideBarProps) {
+  const typeUser = "admin"
+  const [modal, setModal] = useState(false)
+
   return (
     <div
       style={{
@@ -23,7 +30,20 @@ export default function SideBar({ title }: SideBarProps) {
       }}
     >
       {title}
-      <PersonIcon htmlColor="var(--text-color-secondary)" fontSize="small" />
+      {typeUser === "admin" ? (
+        <Button  
+          endIcon={<PersonIcon htmlColor="var(--text-color-secondary)" />} 
+          onClick={() => setModal(true)}
+        />
+      ) : (
+        <PersonIcon
+          htmlColor="var(--text-color-secondary)"
+          fontSize="small"
+          
+        />
+      )}
+
+      <ModalUpdateSideBar modal={modal} setModal={setModal} />
     </div>
-  );
+  )
 }

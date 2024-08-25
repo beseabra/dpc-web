@@ -67,7 +67,7 @@ export default function ImagePicker({
         const { data, error } = await supabase
           .storage
           .from('profileImage') // Nome do bucket
-          .upload(`${bucketRoute}${sanitizedFileName}`, compressedFile, {
+          .upload(`${bucketRoute}/${sanitizedFileName}`, compressedFile, {
             cacheControl: '3600',
             upsert: false,
           });
@@ -79,7 +79,7 @@ export default function ImagePicker({
         const imageUrl = supabase
           .storage
           .from('profileImage')
-          .getPublicUrl(`public/bannerImages/${sanitizedFileName}`).data.publicUrl;
+          .getPublicUrl(`${bucketRoute}/${sanitizedFileName}`).data.publicUrl;
 
     
         onImageUpload(imageUrl);

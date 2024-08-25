@@ -62,7 +62,7 @@ export default function CreateUser() {
           name="profileImage"
           label="Foto de Perfil"
           onImageUpload={handleImageUpload}
-          bucketRoute="public/"
+          bucketRoute="public/profileImage"
           />
         </div>
      
