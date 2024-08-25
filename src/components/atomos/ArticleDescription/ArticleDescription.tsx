@@ -1,7 +1,8 @@
+import styles from './ArticleDescription.module.css';
 interface ArticleTitleProps {
   description: string;
 }
 
 export default function ArticleDescription({ description }: ArticleTitleProps) {
-  return <p style={{ fontSize: 12 }}>{description}</p>;
+  return <p className={styles.description}>{description}</p>;
 }
