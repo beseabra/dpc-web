@@ -29,6 +29,7 @@ export default function InputForms({
       }}
       name={name}
       onChange={onChange}
+      value={value}
     />
   );
 }

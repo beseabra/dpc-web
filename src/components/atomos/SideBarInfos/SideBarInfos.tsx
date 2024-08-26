@@ -2,19 +2,13 @@
 import { Box } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { CustomEvent } from "../../organismo/SecondColumnBody/SecondColumnBody";
 
 interface SideBarInfosProps {
-  infoslist: {
-    imgPath: string;
-    title: string;
-    description: string;
-    link: string;
-  }[];
+  infoslist: CustomEvent[];
 }
 
-export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
-  const router = useRouter();
+export default function SideBarInfos ({ infoslist }: SideBarInfosProps) {
 
   return (
     <div>
@@ -29,6 +23,9 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             textDecoration: "none",
             color: "var(--text-color)",
             flexWrap: "wrap",
+            backgroundColor: "var(--quinary-color)",
+            marginBottom: "1rem",
+            height: "15rem",
           }}
         >
           <Box
@@ -40,7 +37,7 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             }}
           >
             <Image
-              src={info.imgPath}
+              src={info.image}
               alt="Picture of the author"
               objectFit="cover"
               className="center-image"
@@ -54,9 +51,15 @@ export default function SideBarInfos({ infoslist }: SideBarInfosProps) {
             <h6
               style={{
                 fontWeight: 500,
-                margin: "0",
-                fontSize: "14",
+                fontSize: "12px", 
                 textAlign: "justify",
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                WebkitLineClamp: 4, 
+                textOverflow: "ellipsis",
+                lineHeight: "1.1rem", 
+                marginTop: "0"
               }}
             >
               {info.description}

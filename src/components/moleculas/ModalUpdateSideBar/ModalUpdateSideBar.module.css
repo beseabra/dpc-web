@@ -2,8 +2,40 @@
   display: flex;
   position: absolute;
   background-color: white;
-  top: 50%;
-  left: 30%;
   flex-direction: column;
-  padding: 20px;
+  max-width: 35rem;
+  max-height: 40rem;
+  overflow: auto;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loading{
+  display: flex;
+  margin: 20px;
+  width: 100%;
+  justify-content: center;
+}
+.title {
+  background-color: var(--secondary-color);
+  color: var(--text-color-secondary);
+  padding: 1rem;
+  font-weight: bold;
+}
+.forms{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+}
+.subtitle{
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--tertiary-color);
 }

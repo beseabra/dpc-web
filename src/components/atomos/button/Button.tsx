@@ -3,6 +3,7 @@ interface ButtonProps {
   onClick?: () => void;
   color: string;
   textColor?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function Button({
@@ -10,6 +11,7 @@ export default function Button({
   onClick,
   color,
   textColor,
+  type,
 }: ButtonProps) {
   return (
     <button
@@ -23,6 +25,7 @@ export default function Button({
         cursor: "pointer",
       }}
       onClick={onClick}
+      type={type || "button"}
     >
       {text}
     </button>

@@ -3,5 +3,5 @@ interface ArticleTitleProps {
 }
 
 export default function ArticleTitle({ title }: ArticleTitleProps) {
-  return <h1 style={{ height: "4rem" }}>{title}</h1>;
+  return <h1 style={{ height: "1rem" }}>{title}</h1>;
 }

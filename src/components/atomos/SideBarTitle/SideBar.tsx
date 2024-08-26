@@ -6,11 +6,13 @@ import { useState } from "react"
 
 interface SideBarProps {
   title: string
+  containerName?: string
 }
 
-export default function SideBar({ title }: SideBarProps) {
+export default function SideBar({ title, containerName }: SideBarProps) {
   const typeUser = "admin"
   const [modal, setModal] = useState(false)
+  const [infoSideBar, setInfoSideBar] = useState({})
 
   return (
     <div
@@ -43,7 +45,7 @@ export default function SideBar({ title }: SideBarProps) {
         />
       )}
 
-      <ModalUpdateSideBar modal={modal} setModal={setModal} />
+      <ModalUpdateSideBar modal={modal} setModal={setModal} label={containerName}  />  
     </div>
   )
 }
