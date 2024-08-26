@@ -24,9 +24,6 @@ export default function SecondColumn() {
   const [loading, setLoading] = useState(false);
   const [eventsInstagram, setEventsInstagram] = useState< CustomEvent[]>([]);
   const [eventsEventos, setEventsEventos] = useState< CustomEvent[]>([]);
-
-  console.log(eventsInstagram);
-  console.log(eventsEventos);
   
 
 

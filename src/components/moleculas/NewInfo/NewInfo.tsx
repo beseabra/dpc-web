@@ -1,14 +1,43 @@
+'use client';
+import { getEventsByType } from "@/app/api/actions/sideBarInfos";
 import Box from "@mui/material/Box";
+import { useEffect, useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
 import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescription";
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
 import ButtonEdit from "../../atomos/ButtonEdit/ButtonEdit";
 import { user } from "../../list/User/user";
+import { CustomEvent } from "../../organismo/SecondColumnBody/SecondColumnBody";
+import ModalUpdateSideBar from "../ModalUpdateSideBar/ModalUpdateSideBar";
 import styles from "./newInfo.module.css";
-const image = { src: "/ps.png", alt: "Picture of the author" };
+
+
 
 export default function NewInfo() {
+  const [loading, setLoading] = useState(false);
+  const [events, setEvents] = useState<CustomEvent[]>([]);
+  const [modal, setModal] = useState(false);
+
+
+  useEffect(() => {
+    async function fetchEvents() {
+      setLoading(true);
+      try {
+        const events = await getEventsByType("novidade");
+        setEvents(events);
+       
+      } catch (error) {
+        console.error("Erro ao buscar eventos:", error);
+        alert("Erro ao buscar eventos. Por favor, tente novamente.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchEvents();
+  }, []);
+
+
   return (
     <Box
       style={{
@@ -17,22 +46,29 @@ export default function NewInfo() {
         backgroundColor: "#F2F2F2",
       }}
     >
-      <ArticleImage src={image.src} alt={image.alt} />
+      {events.map((event, index) => (
+       
+      <div key={index} className={styles.container} >
+      <ArticleImage src={event.image} alt={event.image} />
       <Box
-        style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem" }}
+        style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem", width: "40rem" }}
       >
         <div className={styles.containerButtonEdit}>
           <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
-          {user === "admin" && <ButtonEdit />}
+          {user === "admin" &&  <ButtonEdit onClick={() => setModal(true)} />}
         </div>
 
-        <ArticleTitle title="Processo seletivo aberto!" />
+        <ArticleTitle title={event.title}/>
         <ArticleDescription
           description={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore eum omnis vero dolore reiciendis, quidem sed consequuntur et, nisi ducimus recusandae quisquam ab doloribus ad natus velit pariatur. Iusto."
+           event.description
           }
         />
       </Box>
+      </div>
+      ))}
+
+      <ModalUpdateSideBar modal={modal} setModal={setModal} label={"novidade"} />
     </Box>
   );
 }

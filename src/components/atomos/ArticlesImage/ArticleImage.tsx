@@ -7,8 +7,8 @@ export default function ArticleImage({ src, alt }: ArticleImageProps) {
   return (
     <div
       style={{
-        width: "50rem",
-        height: "14rem",
+        width: "25rem",
+        height: "16.6rem",
         backgroundImage: `url(${src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
