@@ -81,6 +81,13 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
     }));
   };
 
+  const handleAssignmentChange = (event: SelectChangeEvent<string>) => {
+    setMember((prevMember) => ({
+      ...prevMember,
+      type: event.target.value as string,
+    }));
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
@@ -205,16 +212,24 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
               label="Tipo"
               type="text"
               id="type"
-              value={member.type}
+              value={member.assignment }
               onChange={handleChange}
             />
-            <InputForms
+           <Select
+              value={member.type || ""}
+              onChange={handleAssignmentChange}
+              fullWidth
               label="Cargo"
-              type="text"
-              id="assignment"
-              value={member.assignment}
-              onChange={handleChange}
-            />
+              style={{ marginBottom: "1rem", marginTop: "1rem", backgroundColor: "var(--quinary-color)" }}
+              displayEmpty
+            >
+              <MenuItem value="">
+                Membro de qual projeto?
+              </MenuItem>
+              <MenuItem value="Revista/Projeto">Revista/Projeto</MenuItem>
+              <MenuItem value="Projeto">Projeto</MenuItem>
+            </Select>
+            
           </div>
           <div className={styles.buttonGroup}>
             <Button
