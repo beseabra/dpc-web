@@ -1,9 +1,9 @@
 "use client";
 import ButtonEdit from "@/components/atomos/ButtonEdit/ButtonEdit";
-import { user } from "@/components/list/User/user";
 import ModalMemberAdd from "@/components/moleculas/ModalMemberAdd/ModalMemberAdd";
+import sessionCookie from "@/context/sessionCokie";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import MemberProject from "../../components/atomos/MemberProject/Member";
 import styles from "./page.module.css";
@@ -11,7 +11,16 @@ import styles from "./page.module.css";
 
 export default function Project() {
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState("");
   
+  useEffect(() => {
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      setUser(userPayload?.type || "user");
+    };
+
+    fetchUserPayload();
+  }, []);
 
   return (
     <main>

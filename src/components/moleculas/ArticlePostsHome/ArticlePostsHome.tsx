@@ -4,7 +4,6 @@ import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import Pagination from "../../atomos/Pagination/Pagination";
 import SearchComponent from "../../atomos/SearchComponent/SerchComponent";
-import { articlesPosts } from "../../list/articlesPosts/articlesPosts";
 import ArticleListMagazine from "../ArticleListMagazine/ArticleListMagazine";
 
 function calculateTotalPages(totalItems: number, itemsPerPage: number) {
@@ -14,13 +13,14 @@ function calculateTotalPages(totalItems: number, itemsPerPage: number) {
 export default function ArticlePostsHome() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredArticles, setFilteredArticles] = useState(articlesPosts);
+  
+  const { articles, loading } = useArticles();
+  const [filteredArticles, setFilteredArticles] = useState(articles);
   const itemsPerPage = 10;
 
   const totalItems = filteredArticles.length;
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
 
-  const { articles, loading } = useArticles();
 
   if (loading) {
     return  <CircularProgress />;
@@ -34,14 +34,14 @@ export default function ArticlePostsHome() {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
-    const filtered = articlesPosts.filter((article) => {
+    const filtered = articles.filter((article) => {
       return (
         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.author.author
+        article.article.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.authorId
           ?.toLowerCase()
           .includes(searchTerm.toLowerCase()) ||
-        article.area.toLowerCase().includes(searchTerm.toLowerCase())
+        article.subtitle.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
     setFilteredArticles(filtered);

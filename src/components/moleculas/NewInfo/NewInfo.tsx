@@ -1,5 +1,6 @@
 'use client';
 import { getEventsByType } from "@/app/api/actions/sideBarInfosAction";
+import sessionCookie from "@/context/sessionCokie";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
@@ -7,7 +8,6 @@ import ArticleDescription from "../../atomos/ArticleDescription/ArticleDescripti
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import ArticleImage from "../../atomos/ArticlesImage/ArticleImage";
 import ButtonEdit from "../../atomos/ButtonEdit/ButtonEdit";
-import { user } from "../../list/User/user";
 import { CustomEvent } from "../../organismo/SecondColumnBody/SecondColumnBody";
 import ModalUpdateSideBar from "../ModalUpdateSideBar/ModalUpdateSideBar";
 import styles from "./newInfo.module.css";
@@ -18,7 +18,7 @@ export default function NewInfo() {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState<CustomEvent[]>([]);
   const [modal, setModal] = useState(false);
-
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     async function fetchEvents() {
@@ -35,6 +35,12 @@ export default function NewInfo() {
       }
     }
     fetchEvents();
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      setUser(userPayload?.type || "user");
+    };
+
+    fetchUserPayload();
   }, []);
 
 

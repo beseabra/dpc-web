@@ -1,5 +1,6 @@
 "use client";
 import { getEventsByType } from "@/app/api/actions/sideBarInfosAction";
+import sessionCookie from "@/context/sessionCokie";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { Button, CircularProgress, Typography } from "@mui/material";
@@ -8,7 +9,6 @@ import { useEffect, useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";
 import ArticleTitle from "../../atomos/ArticleTitle/ArticleTitle";
 import ButtonEdit from "../../atomos/ButtonEdit/ButtonEdit";
-import { user } from "../../list/User/user";
 import ModalUpdateSideBar from "../ModalUpdateSideBar/ModalUpdateSideBar";
 import styles from "./carousel.module.css";
 
@@ -25,6 +25,7 @@ export default function TextMobileStepper() {
   const [activeStep, setActiveStep] = useState(0);
   const [activeDot, setActiveDot] = useState(0);
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     async function fetchEvents() {
@@ -40,6 +41,12 @@ export default function TextMobileStepper() {
       }
     }
     fetchEvents();
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      setUser(userPayload?.type || "user");
+    };
+
+    fetchUserPayload();
   }, []);
 
   const maxSteps = images.length;

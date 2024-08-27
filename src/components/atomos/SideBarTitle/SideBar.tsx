@@ -1,8 +1,9 @@
 'use client'
 import ModalUpdateSideBar from "@/components/moleculas/ModalUpdateSideBar/ModalUpdateSideBar"
+import sessionCookie from "@/context/sessionCokie"
 import PersonIcon from "@mui/icons-material/Person"
 import { Button } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface SideBarProps {
   title: string
@@ -10,8 +11,18 @@ interface SideBarProps {
 }
 
 export default function SideBar({ title, containerName }: SideBarProps) {
-  const typeUser = "admin"
+  const [user, setUser] = useState("");
   const [modal, setModal] = useState(false)
+  
+  useEffect(() => {
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      setUser(userPayload?.type || "user");
+    };
+
+    fetchUserPayload();
+  }, []);
+  
 
   return (
     <div
@@ -31,7 +42,7 @@ export default function SideBar({ title, containerName }: SideBarProps) {
       }}
     >
       {title}
-      {typeUser === "admin" ? (
+      {user === "admin" ? (
         <Button  
           endIcon={<PersonIcon htmlColor="var(--text-color-secondary)" />} 
           onClick={() => setModal(true)}

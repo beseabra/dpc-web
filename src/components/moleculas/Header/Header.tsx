@@ -1,22 +1,29 @@
 "use client";
 
+import sessionCookie from "@/context/sessionCokie";
 import PersonIcon from "@mui/icons-material/Person";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { user } from "../../list/User/user";
 import LoginModal from "../LoginModal/LoginModal";
 import styles from "./header.module.css";
 
 export default function Header() {
   const [login, setLogin] = useState(false);
   const pathname = usePathname();
+  const [user, setUser] = useState("");
 
   const closeLoginModal = () => {
     setLogin(false);
   };
-
+ 
   useEffect(() => {
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      setUser(userPayload?.type || "user");
+    };
+
+    fetchUserPayload();
     const handleClickOutside = (event: any) => {
       const modalContent = document.querySelector(`.${styles.modalContent}`);
       if (login && modalContent && !modalContent.contains(event.target)) {
