@@ -17,8 +17,6 @@ export async function createSideBarInfo(formData: FormData) {
       link,
       image,
       type,
-      createdAt: "TEste",
-      updatedAt: "TEste",
     },
   });
 

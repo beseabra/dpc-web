@@ -1,5 +1,5 @@
 "use client";
-import { getEventsByType } from "@/app/api/actions/sideBarInfos";
+import { getEventsByType } from "@/app/api/actions/sideBarInfosAction";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { Button, CircularProgress, Typography } from "@mui/material";

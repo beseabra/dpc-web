@@ -1,5 +1,5 @@
 'use client';
-import { createSideBarInfo, getEventsByType, updateSideBarInfo } from "@/app/api/actions/sideBarInfos";
+import { createSideBarInfo, getEventsByType, updateSideBarInfo } from "@/app/api/actions/sideBarInfosAction";
 import Button from "@/components/atomos/button/Button";
 import InputForms from "@/components/atomos/InputForms/InputForms";
 import { Box, CircularProgress, Modal, Typography } from "@mui/material";

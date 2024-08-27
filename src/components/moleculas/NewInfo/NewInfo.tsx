@@ -1,5 +1,5 @@
 'use client';
-import { getEventsByType } from "@/app/api/actions/sideBarInfos";
+import { getEventsByType } from "@/app/api/actions/sideBarInfosAction";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import ArticleDate from "../../atomos/ArticleDate/ArticleDate";

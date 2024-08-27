@@ -1,9 +1,19 @@
+"use client";
+import ButtonEdit from "@/components/atomos/ButtonEdit/ButtonEdit";
+import { user } from "@/components/list/User/user";
+import ModalMemberAdd from "@/components/moleculas/ModalMemberAdd/ModalMemberAdd";
 import Image from "next/image";
+import { useState } from "react";
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import MemberProject from "../../components/atomos/MemberProject/Member";
 import { collaborator } from "../../components/list/collaborator/collaborator";
 import styles from "./page.module.css";
+
+
 export default function Project() {
+  const [modal, setModal] = useState(false);
+  
+
   return (
     <main>
       <div className={styles.container}>
@@ -95,10 +105,15 @@ export default function Project() {
             oportunidades de aprendizagem para todos; Sentimento de dono
           </div>
         </div>
-
-        <MagazineTitle title="Nosso time" />
-        <MemberProject collaborator={collaborator} />
+        <div className={styles.containerTitle}>
+          <MagazineTitle title="Nosso time" />
+          {user === "admin" && (
+            <ButtonEdit onClick={() => setModal(true)} />
+          )}
+        </div>
       </div>
+      <MemberProject collaborator={collaborator} />
+      <ModalMemberAdd modal={modal} setModal={setModal} />
     </main>
   );
 }

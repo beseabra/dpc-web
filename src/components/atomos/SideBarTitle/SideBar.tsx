@@ -12,7 +12,6 @@ interface SideBarProps {
 export default function SideBar({ title, containerName }: SideBarProps) {
   const typeUser = "admin"
   const [modal, setModal] = useState(false)
-  const [infoSideBar, setInfoSideBar] = useState({})
 
   return (
     <div
