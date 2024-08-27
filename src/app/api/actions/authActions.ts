@@ -18,7 +18,7 @@ export async function createAccount(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const passwordHash = await bcrypt.hash(password, 10);
-  const typeUser = "admin";
+  const typeUser = "user";
 
   await prisma.user.create({
     data: {

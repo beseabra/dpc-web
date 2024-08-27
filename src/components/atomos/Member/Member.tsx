@@ -62,7 +62,7 @@ export default function Members() {
           <div className={styles.loadingContainer}>
             <CircularProgress />
           </div>
-          )}
+      )}
     </div>
   );
 }
