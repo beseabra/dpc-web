@@ -209,9 +209,9 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
               onChange={handleChange}
             />
             <InputForms
-              label="Tipo"
+              label="Função"
               type="text"
-              id="type"
+              id="assignment"
               value={member.assignment }
               onChange={handleChange}
             />
