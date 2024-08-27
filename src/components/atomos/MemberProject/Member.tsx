@@ -4,22 +4,9 @@ import { CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./member.module.css";
-interface Collaborator {
-  name: string;
-  function: string;
-  lattes: string;
-  email: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-}
 
-interface MemberProps {
-  collaborator: Collaborator[];
-}
 
-export default function MemberProject({ collaborator }: MemberProps) {
+export default function MemberProject() {
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
 

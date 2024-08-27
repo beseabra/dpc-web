@@ -1,6 +1,5 @@
 import MagazineTitle from "../../components/atomos/MagazineTitle/MagazineTitle";
 import Member from "../../components/atomos/Member/Member";
-import { collaborator } from "../../components/list/collaborator/collaborator";
 import Contacts from "../../components/moleculas/contacts/contacts";
 import styles from "./page.module.css";
 export default function Presentation() {
@@ -18,7 +17,7 @@ export default function Presentation() {
         </div>
         <MagazineTitle title="Membros" />
 
-        <Member collaborator={collaborator} />
+        <Member  />
 
         <Contacts />
       </div>

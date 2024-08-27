@@ -9,6 +9,7 @@ export async function createMember(formdata: FormData) {
   const lattes = formdata.get("lattes") as string;
   const email = formdata.get("email") as string;
   const type = formdata.get("type") as string;
+  const assignment = formdata.get("assignment") as string;
 
   const member = await prisma.member.create({
     data: {
@@ -17,6 +18,7 @@ export async function createMember(formdata: FormData) {
       lattes,
       email,
       type,
+      assignment,
     },
   });
 
@@ -29,6 +31,7 @@ export async function updateMember(id: string, formdata: FormData) {
   const lattes = formdata.get("lattes") as string;
   const email = formdata.get("email") as string;
   const type = formdata.get("type") as string;
+  const assignment = formdata.get("assignment") as string;
 
   const updatedMember = await prisma.member.update({
     where: { id },
@@ -38,6 +41,7 @@ export async function updateMember(id: string, formdata: FormData) {
       lattes,
       email,
       type,
+      assignment,
     },
   });
 

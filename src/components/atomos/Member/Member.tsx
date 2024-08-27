@@ -1,24 +1,37 @@
+'use client'
+import { getMembersByType } from "@/app/api/actions/membersAction";
+import { Member } from "@/components/moleculas/ModalMemberAdd/ModalMemberAdd";
+import { CircularProgress } from "@mui/material";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "./member.module.css";
-interface Collaborator {
-  name: string;
-  function: string;
-  lattes: string;
-  email: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-}
 
-interface MemberProps {
-  collaborator: Collaborator[];
-}
+export default function Members() {
 
-export default function Member({ collaborator }: MemberProps) {
+  const [loading, setLoading] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+
+
+  useEffect(() => {
+    async function loadMembers () {
+      setLoading(true);
+      try {
+        const fetchedMembers: Member[] = await getMembersByType('Revista/projeto');
+        setMembers(fetchedMembers);
+      } catch (error) {
+        console.error("Erro ao carregar os membros:", error);
+        alert("Erro ao carregar os membros.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadMembers()
+  }, []);
+
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
-      {collaborator.map((collab, index) => (
+      {members.map((collab, index) => (
         <div
           style={{
             display: "flex",
@@ -28,8 +41,8 @@ export default function Member({ collaborator }: MemberProps) {
           key={index}
         >
           <Image
-            src={collab.image.src}
-            alt={collab.image.alt}
+            src={collab.image}
+            alt={collab.image}
             width={125}
             height={125}
             objectFit="cover"
@@ -37,7 +50,7 @@ export default function Member({ collaborator }: MemberProps) {
           />
           <div>
             <h5 className={styles.margin}>{collab.name}</h5>
-            <h6 className={styles.margin}>{collab.function}</h6>
+            <h6 className={styles.margin}>{collab.assignment}</h6>
             <h6 className={styles.margin}>
               Lattes: <a href={collab.lattes}>{collab.lattes}</a>
             </h6>
@@ -45,6 +58,11 @@ export default function Member({ collaborator }: MemberProps) {
           </div>
         </div>
       ))}
+      {loading && (
+          <div className={styles.loadingContainer}>
+            <CircularProgress />
+          </div>
+          )}
     </div>
   );
 }

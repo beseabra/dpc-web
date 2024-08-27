@@ -13,6 +13,7 @@ export interface Member {
   lattes: string;
   email: string;
   type: string;
+  assignment: string;
 }
 
 interface ModalUpdateSideBarProps {
@@ -32,6 +33,7 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
     lattes: "",
     email: "",
     type: "",
+    assignment: "",
   });
 
   const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
@@ -89,6 +91,7 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
       formData.append("lattes", member.lattes);
       formData.append("email", member.email);
       formData.append("type", member.type);
+      formData.append("assignment", member.assignment);
 
       if (selectedMemberId) {
         await updateMember(selectedMemberId, formData);
@@ -123,6 +126,7 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
             lattes: "",
             email: "",
             type: "",
+            assignment: "",
           });
           loadMembers();
         } catch (error) {
@@ -202,6 +206,13 @@ export default function ModelMemberAdd({ modal, setModal }: ModalUpdateSideBarPr
               type="text"
               id="type"
               value={member.type}
+              onChange={handleChange}
+            />
+            <InputForms
+              label="Cargo"
+              type="text"
+              id="assignment"
+              value={member.assignment}
               onChange={handleChange}
             />
           </div>

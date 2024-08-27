@@ -67,12 +67,13 @@ model Event {
 }
 
 model Member {
-  id        String   @id @default(uuid())
-  image     String
-  name      String
-  lattes    String
-  email     String
-  type      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(uuid())
+  image      String
+  name       String
+  lattes     String
+  email      String
+  type       String
+  assignment String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
