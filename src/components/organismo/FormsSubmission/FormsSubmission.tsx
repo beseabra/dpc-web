@@ -1,8 +1,11 @@
 import { createArticle } from "@/app/api/actions/articloAction";
+import { getUserById } from "@/app/api/actions/userAction";
 import ImagePicker from "@/components/moleculas/ImagePicker/ImagePicker";
+import sessionCookie from "@/context/sessionCokie";
 import { Checkbox, Modal } from "@mui/material";
+import { User } from "@prisma/client";
 import { PDFViewer } from "@react-pdf/renderer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../atomos/button/Button";
 import FormsArticle from "../../moleculas/FormsArticle/FormsArticle";
 import FormsAuthor from "../../moleculas/FormsAuthor/FormsAuthor";
@@ -52,6 +55,24 @@ export default function FormsSubmission() {
     }));
   };
 
+  const [user, setUser] = useState("");
+  const [userInfos, setUserInfos] = useState<User>();
+  
+
+  useEffect(() => {
+    const fetchUserPayload = async () => {
+      const userPayload = await sessionCookie();
+      if (!userPayload) return;
+      const userInfos = await getUserById(userPayload?.sub);
+      if (!userInfos) return;
+      setUserInfos(userInfos);
+      setUser(userPayload?.sub || "null");
+    };
+
+    fetchUserPayload();
+  }, []);
+
+
   const handleSubmit = async (event: React.FormEvent) => {
     if (!checked) {
       alert("Por favor, marque a caixa de seleção antes de submeter.");
@@ -63,8 +84,7 @@ export default function FormsSubmission() {
     formData.append("title", submissionData.article.title);
     formData.append("subtitle", submissionData.article.subtitle);
     formData.append("article", submissionData.article.article);
-    formData.append("keywords", submissionData.article.keywords);
-    formData.append("authorId", "96593c0c-ed7f-44a7-a128-e481011f1697");
+    formData.append("authorId", user);
     formData.append("keywords", JSON.stringify(["keyword 1", "keyword 2"]));
     formData.append("coAuthors", JSON.stringify([submissionData.coAuthor]));
     if (profileImageUrl) {
@@ -77,7 +97,7 @@ export default function FormsSubmission() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <FormsAuthor onSubmit={handleAuthorDataChange} />
+        <FormsAuthor onSubmit={handleAuthorDataChange}  autohorData={userInfos} />
         <FormsAuthor onSubmit={handleCoAuthorDataChange} isCoAuthor />
         <FormsArticle onChange={handleArticleDataChange} />
         <ImagePicker id="bannerImages" name="bannerImages" label="bannerImages" onImageUpload={handleImageUpload} bucketRoute="public/bannerImages/" />

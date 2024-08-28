@@ -7,6 +7,7 @@ interface InputFormsProps {
   value?: string;
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 export default function InputForms({
@@ -16,6 +17,7 @@ export default function InputForms({
   value,
   name,
   onChange,
+  disabled,
 }: InputFormsProps) {
   return (
     <TextField
@@ -30,6 +32,7 @@ export default function InputForms({
       name={name}
       onChange={onChange}
       value={value}
+      disabled={disabled}
     />
   );
 }
