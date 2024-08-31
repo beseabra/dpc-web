@@ -1,5 +1,7 @@
+import { getUserByEmail } from "@/app/api/actions/userAction";
+import sessionCookie from "@/context/sessionCokie";
 import { User } from "@prisma/client";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import InputForms from "../../atomos/InputForms/InputForms";
 import MagazineTitle from "../../atomos/MagazineTitle/MagazineTitle";
 import PinkLine from "../../atomos/PinkLine/PinkLine";
@@ -11,7 +13,7 @@ interface IFormsAuthor {
   autohorData?: Partial<User>;
 }
 
-export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuthor) {
+export default function FormsAuthor({ onSubmit, isCoAuthor }: IFormsAuthor) {
   const [author, setAuthor] = useState<Partial<User>>({
     name: "",
     lastName: "",
@@ -23,7 +25,47 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
     image: "",
   });
 
-  const handleAuthorChange = (e: { target: { name: any; value: any } }) => {
+  const [disabled, setDisabled] = useState(false);
+  const [mail, setMail] = useState("");
+  const [user, setUser] = useState<Partial<User>>({});
+
+  const fetchUserPayload = useCallback(async () => {
+    const userPayload = await sessionCookie();
+    if (userPayload) setMail(userPayload.email);
+  }, []);
+
+  const fetchAuthor = useCallback(async () => {
+    if (mail) {
+      const response = await getUserByEmail(mail);
+      if (response) setUser(response);
+    }
+  }, [mail]);
+
+  useEffect(() => {
+    fetchUserPayload();
+  }, [fetchUserPayload]);
+
+  useEffect(() => {
+    fetchAuthor();
+  }, [fetchAuthor]);
+
+  useEffect(() => {
+    if (!isCoAuthor && user) {
+      setAuthor({
+        name: user.name || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        institution: user.institution || "",
+        lattes: user.lattes || "",
+        formation: user.formation || "",
+        image: user.image || "",
+      });
+      setDisabled(true);
+    }
+  }, [isCoAuthor, user]);
+
+  const handleAuthorChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     const updatedAuthor = { ...author, [name]: value };
     setAuthor(updatedAuthor);
@@ -41,6 +83,7 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
           value={author.name || ""}
           name="name"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
         <InputForms
           label="Sobrenome"
@@ -48,15 +91,17 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
           value={author.lastName || ""}
           name="lastName"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
       </div>
       <div className={style.containerInputs}>
         <InputForms
           label="Email"
           type=""
-          value={author.email}
+          value={author.email || ""}
           name="email"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
         <InputForms
           label="Telefone"
@@ -64,6 +109,7 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
           value={author.phone || ""}
           name="phone"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
       </div>
       <div className={style.containerInputs}>
@@ -73,6 +119,7 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
           value={author.institution || ""}
           name="institution"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
         <InputForms
           label="Lattes"
@@ -80,22 +127,25 @@ export default function FormsAuthor({ onSubmit, isCoAuthor = false }: IFormsAuth
           value={author.lattes || ""}
           name="lattes"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
       </div>
       <div className={style.containerInputs}>
         <InputForms
           label="Titulação"
           type=""
-          value={author.formation   || ""}
-          name="graduation"
+          value={author.formation || ""}
+          name="formation"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
         <InputForms
           label="Insira uma foto de perfil"
           type=""
           value={author.image || ""}
-          name="photo"
+          name="image"
           onChange={handleAuthorChange}
+          disabled={disabled}
         />
       </div>
     </div>
