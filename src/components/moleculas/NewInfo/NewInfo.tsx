@@ -12,8 +12,6 @@ import { CustomEvent } from "../../organismo/SecondColumnBody/SecondColumnBody";
 import ModalUpdateSideBar from "../ModalUpdateSideBar/ModalUpdateSideBar";
 import styles from "./newInfo.module.css";
 
-
-
 export default function NewInfo() {
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState<CustomEvent[]>([]);
@@ -43,37 +41,21 @@ export default function NewInfo() {
     fetchUserPayload();
   }, []);
 
-
   return (
-    <Box
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        backgroundColor: "#F2F2F2",
-      }}
-    >
+    <Box className={styles.boxWrapper}>
       {events.map((event, index) => (
-       
-      <div key={index} className={styles.container} >
-      <ArticleImage src={event.image} alt={event.image} />
-      <Box
-        style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem", width: "40rem" }}
-      >
-        <div className={styles.containerButtonEdit}>
-          <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
-          {user === "admin" &&  <ButtonEdit onClick={() => setModal(true)} />}
+        <div key={index} className={styles.container}>
+          <ArticleImage src={event.image} alt={event.image} />
+          <Box className={styles.boxContainer}>
+            <div className={styles.containerButtonEdit}>
+              <ArticleDate date="Quarta-feira, 09 de Agosto 2023" />
+              {user === "admin" && <ButtonEdit onClick={() => setModal(true)} />}
+            </div>
+            <ArticleTitle title={event.title} />
+            <ArticleDescription description={event.description} />
+          </Box>
         </div>
-
-        <ArticleTitle title={event.title}/>
-        <ArticleDescription
-          description={
-           event.description
-          }
-        />
-      </Box>
-      </div>
       ))}
-
       <ModalUpdateSideBar modal={modal} setModal={setModal} label={"novidade"} />
     </Box>
   );

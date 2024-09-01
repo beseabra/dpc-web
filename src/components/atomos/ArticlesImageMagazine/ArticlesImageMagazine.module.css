@@ -1,0 +1,35 @@
+.containerImage {
+  width: 20.5rem; /* Tamanho para celulares */
+  height: 15rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .containerImage {
+    width: 20rem; /* Tamanho para tablets */
+    height: 15rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .containerImage {
+    width: 20rem; /* Tamanho ajustado para notebooks (intermediário) */
+    height: 17rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .containerImage {
+    width: 12rem; /* notebook */
+    height: 8rem;
+  }
+}
+
+@media (min-width: 1700px) {
+  .containerImage {
+    width: 15rem; /* Ajuste para telas fullscreen */
+    height: 10rem;
+  }
+}

@@ -1,9 +1,11 @@
+import styles from "./ArticleDateMagazine.module.css";
+
 interface ArticleDateProps {
   date: Date;
 }
 export default function ArticleDateMagazine({ date }: ArticleDateProps) {
   return (
-    <p style={{ fontSize: 14 }}>
+    <p className={styles.text}>
       <i>
         {new Date(date).toLocaleDateString("pt-BR", {
           day: "2-digit",

@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 6rem;
-  margin-right: 6rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   margin-top: 1rem;
 }
 
 .carouselImage {
-  height: 350px;
+  height: 27rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,7 @@
 
 .textButton {
   color: var(--secondary-color);
+  font-size: 1.5rem;
 }
 
 .dotsContainer {
@@ -71,4 +72,28 @@
 .editButtoncontainer {
   display: flex;
   justify-content: space-between;
+}
+@media (min-width: 1440px) {
+  .carouselImage {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--text-color-secondary);
+  }
+  .carouselContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 1rem;
+  }
+  .textButton {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+  }
 }

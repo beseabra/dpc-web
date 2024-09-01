@@ -1,0 +1,9 @@
+.text {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 1440px) {
+  .text {
+    font-size: 1rem;
+  }
+}

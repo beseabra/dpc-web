@@ -9,6 +9,7 @@ export default function FirstColumn() {
         display: "flex",
         flexDirection: "column",
         paddingRight: "1rem",
+        overflow: "hidden",
       }}
     >
       <NewInfo />

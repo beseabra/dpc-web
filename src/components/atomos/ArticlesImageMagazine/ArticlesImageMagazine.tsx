@@ -1,3 +1,5 @@
+
+import styles from "./ArticlesImageMagazine.module.css";
 interface ArticleImageProps {
   src: string;
   alt: string;
@@ -6,10 +8,9 @@ interface ArticleImageProps {
 export default function ArticlesImageMagazine({ src, alt }: ArticleImageProps) {
   return (
     <div
+      className={styles.containerImage}
       aria-label={alt}
       style={{
-        width: "11rem",
-        height: "7rem",
         backgroundImage: `url(${src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",

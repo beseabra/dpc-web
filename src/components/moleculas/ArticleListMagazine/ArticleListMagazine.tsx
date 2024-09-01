@@ -17,7 +17,7 @@ export default function ArticleListMagazine({
     <div className={styles.container}>
       {articlesPosts &&
         articlesPosts.map((article, index) => (
-          <div key={index}>
+          <div key={index} className={styles.item}>
             <Link href={`/articles/${article.id}`} className={styles.links}>
               <ArticleDateMagazine date={article.createdAt} />
               <ArticleTitleDescription title={article.title} />

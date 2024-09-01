@@ -1,18 +1,14 @@
-import Box from "@mui/material/Box";
 import FirstColumn from "../../organismo/FirstColumnBody/FirstColumnBody";
 import SecondColumn from "../../organismo/SecondColumnBody/SecondColumnBody";
+import styles from "./BodyColumns.module.css";
 
 export default function RecentNews() {
   return (
-    <Box
-      style={{
-        display: "grid",
-        gridTemplateColumns: "4.3fr 1fr",
-        margin: "1rem 6rem 0 6rem",
-      }}
-    >
+    <div className={styles.container}>
       <FirstColumn />
-      <SecondColumn />
-    </Box>
+      <div className={styles.secondColumnHidden}>
+        <SecondColumn />
+      </div>
+    </div>
   );
 }

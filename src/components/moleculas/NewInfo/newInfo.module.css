@@ -3,6 +3,59 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .container {
   display: flex;
+}
+
+.boxContainer {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 40rem;
+}
+
+.boxWrapper {
+  display: flex;
+  flex-direction: row;
+  background-color: #f2f2f2;
+}
+
+/* Tamanho para tablets */
+@media (min-width: 768px) {
+}
+
+/* Tamanho ajustado para notebooks (intermediário) */
+@media (min-width: 1024px) {
+}
+
+/* notebook */
+@media (min-width: 1440px) {
+  .containerButtonEdit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .boxContainer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 40rem;
+  }
+
+  .boxWrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: #f2f2f2;
+  }
+}
+
+@media (min-width: 1700px) {
+  .containerImage {
+    width: 15rem; /* Ajuste para telas fullscreen */
+    height: 10rem;
+  }
 }

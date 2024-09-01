@@ -1,0 +1,17 @@
+.text {
+  font-size: 2rem;
+  width: 10rem;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 1440px) {
+  .text {
+    font-size: 1.5rem;
+    height: 2rem;
+    width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

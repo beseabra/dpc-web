@@ -1,11 +1,35 @@
 .container {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
 }
+.item {
+  width: 100%;
+}
+
 .links {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+}
+/* Ajuste para telas fullscreen */
+@media (min-width: 1700px) {
+  .container {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+  }
 }

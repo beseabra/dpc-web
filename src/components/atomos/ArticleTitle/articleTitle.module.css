@@ -1,0 +1,17 @@
+.title {
+  font-size: 3rem;
+  height: 2rem;
+}
+@media (min-width: 768px) {
+}
+
+/* Tamanho ajustado para notebooks (intermediário) */
+@media (min-width: 1024px) {
+}
+
+/* notebook */
+@media (min-width: 1440px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}

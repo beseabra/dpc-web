@@ -1,2 +1,22 @@
-.firstColumn {
+.container {
+  display: grid;
+  grid-template-columns: 1fr; /* Layout padrão para mobile */
+  margin: 1rem 1.8rem 0 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 4.3fr 1fr; /* Layout para telas médias e maiores */
+    margin: 1rem 6rem 0 6rem;
+  }
+}
+
+.secondColumnHidden {
+  display: none; /* Oculta a segunda coluna no mobile */
+}
+
+@media (min-width: 768px) {
+  .secondColumnHidden {
+    display: block; /* Mostra a segunda coluna em telas médias e maiores */
+  }
 }

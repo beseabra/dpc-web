@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   height: 5rem;
-  padding: 0 6rem;
+  padding: 0 1rem;
   background-color: var(--primary-color);
   gap: 1rem;
 }
@@ -13,13 +13,45 @@
   align-items: center;
 }
 
+/* Estilo para itens de menu */
 .menuItens {
   text-decoration: none;
   color: var(--text-color-secondary);
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   font-family: "Roboto", sans-serif;
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 500;
   cursor: pointer;
+}
+
+/* Esconde o botão do menu no desktop */
+.menuButton {
+  display: none;
+}
+
+/* Estilos específicos para dispositivos móveis */
+@media (max-width: 768px) {
+  .menuButton {
+    display: block; /* Exibe o ícone do menu em dispositivos móveis */
+  }
+
+  .menu {
+    display: none; /* Esconde o menu de itens no mobile */
+  }
+  .header {
+    height: 6rem;
+    padding-left: 3rem;
+  }
+}
+
+/* Estilos específicos para desktops */
+@media (min-width: 768px) {
+  .menu {
+    display: flex; /* Exibe os itens do menu no desktop */
+  }
+
+  .menuButton {
+    display: none; /* Esconde o ícone do menu no desktop */
+  }
 }
