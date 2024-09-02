@@ -1,9 +1,10 @@
 .text {
   font-size: 2rem;
-  width: 10rem;
-  white-space: normal;
+  width: 18rem;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-height: 3rem;
 }
 @media (min-width: 1440px) {
   .text {

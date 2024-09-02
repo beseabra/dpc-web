@@ -3,7 +3,7 @@
 import sessionCookie from "@/context/sessionCokie";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
-import { Drawer, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { IconButton, List, ListItem, ListItemText, Popover } from "@mui/material";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import styles from "./header.module.css";
 
 export default function Header() {
   const [login, setLogin] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState("");
@@ -45,8 +45,12 @@ export default function Header() {
     };
   }, [login]);
 
-  const toggleDrawer = (open: boolean) => () => {
-    setDrawerOpen(open);
+  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const menuItems = [
@@ -84,51 +88,57 @@ export default function Header() {
                 </a>
               )
           )}
-          <a
-            className={styles.menuItens}
-            onClick={() => setLogin(true)}
-          >
+          <a className={styles.menuItens} onClick={() => setLogin(true)}>
             <PersonIcon htmlColor="var(--text-color-secondary)" />
           </a>
         </div>
 
         {/* Botão de Menu para Mobile */}
-        <IconButton
-          className={styles.menuButton}
-          onClick={toggleDrawer(true)}
-        >
-          <MenuIcon htmlColor="var(--text-color-secondary)" sx={{ fontSize: 80, padding: 7,}} />
+        <IconButton onClick={handleMenuClick} className={styles.menuButton}>
+          <MenuIcon htmlColor="var(--text-color-secondary)" sx={{ fontSize: 80, padding: 7 }} />
         </IconButton>
       </div>
 
-      {/* Drawer para Mobile */}
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      {/* Popover para Mobile */}
+      <Popover
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
         <List>
           {menuItems.map(
             (item) =>
               item.show !== false && (
                 <ListItem
+                  button
                   key={item.href}
                   onClick={() => {
                     router.push(item.href);
-                    setDrawerOpen(false);
+                    handleClose();
                   }}
                 >
                   <ListItemText
                     primary={item.text}
-                    sx={{
-                      fontWeight: pathname === item.href ? "bold" : "normal",
-                    }}
+                    sx={{ fontWeight: pathname === item.href ? "bold" : "normal" }}
                   />
                 </ListItem>
               )
           )}
-          <ListItem onClick={() => setLogin(true)}>
+          <ListItem button onClick={() => setLogin(true)}>
             <PersonIcon htmlColor="var(--text-color-secondary)" />
             <ListItemText primary="Login" />
           </ListItem>
         </List>
-      </Drawer>
+      </Popover>
+
       {login && <LoginModal onClickClose={closeLoginModal} />}
     </>
   );

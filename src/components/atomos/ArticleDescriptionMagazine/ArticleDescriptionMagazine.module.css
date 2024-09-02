@@ -1,10 +1,23 @@
 .description {
-  font-size: 0.7rem;
+  font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 0.8rem;
-  width: 11rem;
+  width: 19rem;
   text-align: justify;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (min-width: 1440px) {
+  .description {
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    width: 11rem;
+    text-align: justify;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

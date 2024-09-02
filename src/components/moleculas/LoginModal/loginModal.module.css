@@ -83,6 +83,98 @@
   text-decoration: underline;
   margin-top: 1rem;
 }
-.loading{
+.loading {
   margin: auto;
+}
+
+/* notebook */
+@media (min-width: 1440px) {
+  .modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .modal {
+    background-color: var(--quinary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 101;
+  }
+
+  .modalContent {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: var(--text-color-secondary);
+    border-radius: 8px;
+  }
+
+  .buttonClose,
+  .buttonOpen {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .buttonClose {
+    color: var(--text-color);
+  }
+
+  .buttonOpen {
+    background-color: var(--secondary-color);
+    color: var(--text-color-secondary);
+  }
+
+  .loginComponents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 8rem;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+  }
+
+  .buttonContainerClose {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    padding-right: 1rem;
+  }
+
+  .newLogin {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    margin-top: 1rem;
+  }
+  .loading {
+    margin: auto;
+  }
 }

@@ -1,0 +1,18 @@
+.image {
+    width: 43.5rem;
+    height: 30rem;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+
+@media (min-width: 1440px) {
+    .image {
+        width: 25rem;
+        height: 16.6rem;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+}

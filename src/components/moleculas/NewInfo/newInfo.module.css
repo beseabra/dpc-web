@@ -2,16 +2,20 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  height: 4rem;
+  align-items: flex-start;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .boxContainer {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  width: 40rem;
+  width: 42rem;
 }
 
 .boxWrapper {
@@ -38,6 +42,7 @@
 
   .container {
     display: flex;
+    flex-direction: row;
   }
 
   .boxContainer {
