@@ -29,6 +29,13 @@
 /* Ajuste para telas fullscreen */
 @media (min-width: 1700px) {
   .container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  .container {
     grid-template-columns: repeat(8, 1fr);
     gap: 1rem;
   }
