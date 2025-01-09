@@ -26,7 +26,6 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
     setInfosForms((prevData) => {
       const updatedData = { ...prevData, [name]: value };
 
-      // Atualize o estado e envie os dados para o componente pai
       onChange({
         title: updatedData.title,
         subtitle: updatedData.subtitle,
@@ -43,7 +42,6 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
     setInfosForms((prevData) => {
       const updatedData = { ...prevData, article: content };
 
-      // Atualize o estado e envie os dados para o componente pai
       onChange({
         title: updatedData.title,
         subtitle: updatedData.subtitle,

@@ -12,7 +12,6 @@ function calculateTotalPages(totalItems: number, itemsPerPage: number) {
   return Math.ceil(totalItems / itemsPerPage);
 }
 
-// Função para extrair o ano de uma data
 const getYearFromDate = (dateString: Date) => {
   const date = new Date(dateString);
   return date.getFullYear();
@@ -88,7 +87,6 @@ export default function MagazinePosts() {
 
   return (
     <Box>
-      {/* Filtros de ano e busca */}
       <div className={styles.filter}>
         <ButtonGroup variant="text" aria-label="text button group">
           {Array.from(
@@ -125,8 +123,6 @@ export default function MagazinePosts() {
           />
         </div>
       </div>
-
-      {/* Listagem de artigos */}
       {filteredArticles && (
         <ArticleListMagazine
           articlesPosts={filteredArticles.slice(
@@ -135,8 +131,6 @@ export default function MagazinePosts() {
           )}
         />
       )}
-
-      {/* Paginação */}
       <div className={styles.pagination}>
         <Pagination
           page={page}
