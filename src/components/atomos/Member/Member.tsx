@@ -1,16 +1,15 @@
-'use client'
+'use client';
 import { getMembersByType } from "@/app/api/actions/membersAction";
 import { Member } from "@/components/moleculas/ModalMemberAdd/ModalMemberAdd";
 import { CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./member.module.css";
+import i18n from "@/translate/i18n"; 
 
 export default function Members() {
-
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
-
 
   useEffect(() => {
     async function loadMembers () {
@@ -25,9 +24,8 @@ export default function Members() {
         setLoading(false);
       }
     }
-    loadMembers()
+    loadMembers();
   }, []);
-
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
@@ -42,7 +40,7 @@ export default function Members() {
         >
           <Image
             src={collab.image}
-            alt={collab.image}
+            alt={collab.name} 
             width={125}
             height={125}
             objectFit="cover"
@@ -59,9 +57,9 @@ export default function Members() {
         </div>
       ))}
       {loading && (
-          <div className={styles.loadingContainer}>
-            <CircularProgress />
-          </div>
+        <div className={styles.loadingContainer}>
+          <CircularProgress />
+        </div>
       )}
     </div>
   );

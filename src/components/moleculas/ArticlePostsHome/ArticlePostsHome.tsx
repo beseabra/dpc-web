@@ -1,7 +1,8 @@
 "use client";
-import useArticles from "@/hooks/useArticles";
+import { getArticle } from "@/app/api/actions/articloAction";
 import { Box, CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { Article } from "@prisma/client";
+import { useEffect, useState } from "react";
 import Pagination from "../../atomos/Pagination/Pagination";
 import SearchComponent from "../../atomos/SearchComponent/SerchComponent";
 import ArticleListMagazine from "../ArticleListMagazine/ArticleListMagazine";
@@ -13,17 +14,33 @@ function calculateTotalPages(totalItems: number, itemsPerPage: number) {
 export default function ArticlePostsHome() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  
-  const { articles, loading } = useArticles();
-  const [filteredArticles, setFilteredArticles] = useState(articles);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const itemsPerPage = 10;
+
+  useEffect(() => {
+    async function fetchArticles() {
+      setLoading(true);
+      try {
+        const fetchedArticles = await getArticle();
+        setArticles(fetchedArticles);
+        setFilteredArticles(fetchedArticles);
+      } catch (error) {
+        console.error("Failed to fetch articles", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchArticles();
+  }, []);
 
   const totalItems = filteredArticles.length;
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
 
-
   if (loading) {
-    return  <CircularProgress />;
+    return <CircularProgress />;
   }
 
   const handlePageChange = (newPage: number) => {
@@ -33,15 +50,14 @@ export default function ArticlePostsHome() {
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    setSearchTerm(value);
     const filtered = articles.filter((article) => {
       return (
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.article.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.authorId
-          ?.toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        article.subtitle.toLowerCase().includes(searchTerm.toLowerCase())
+        article.title.toLowerCase().includes(value.toLowerCase()) ||
+        article.article.toLowerCase().includes(value.toLowerCase()) ||
+        article.authorId?.toLowerCase().includes(value.toLowerCase()) ||
+        article.subtitle.toLowerCase().includes(value.toLowerCase())
       );
     });
     setFilteredArticles(filtered);
@@ -56,7 +72,7 @@ export default function ArticlePostsHome() {
         searchTerm={searchTerm}
         handleSearchChange={handleSearchChange}
       />
-      <ArticleListMagazine articlesPosts={articles} />
+      <ArticleListMagazine articlesPosts={filteredArticles.slice((page - 1) * itemsPerPage, page * itemsPerPage)} />
       <Pagination
         page={page}
         handlePageChange={handlePageChange}

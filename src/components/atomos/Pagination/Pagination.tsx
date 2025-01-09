@@ -1,3 +1,4 @@
+import i18n from "@/translate/i18n";
 import { Box } from "@mui/material";
 import style from "./pagination.module.css";
 
@@ -19,12 +20,11 @@ export default function Pagination({
           <button
             key={i}
             onClick={() => handlePageChange(i + 1)}
-            style={{
-              backgroundColor:
-                i + 1 === page
-                  ? `${style.paginationButton} ${style.activePage}`
-                  : style.paginationButton,
-            }}
+            className={
+              i + 1 === page
+                ? `${style.paginationButton} ${style.activePage}`
+                : style.paginationButton
+            }
           >
             {i + 1}
           </button>

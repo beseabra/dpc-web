@@ -13,6 +13,7 @@ export default function ArtigoReference() {
     return `${day}/${month}/${year}`;
   };
 
+  // Exemplo de referência ABNT (descomente e substitua pelos dados reais)
   //  const abntReference = `${reference?.article.author.toUpperCase()}; ${reference?.author.coAuthor.toUpperCase()}. ${
   //  reference?.title
   //}. ${reference?.writer}. ${reference?.date}. ${reference?.area}, v. ${
@@ -20,6 +21,7 @@ export default function ArtigoReference() {
   //}, n. ${reference?.number}, ${reference?.year}. ${
   // reference?.version
   //}. Disponível em: ${currentUrl}. Acesso em: ${getCurrentDate()}.`;
+  const abntReference = `AUTOR. Título do artigo. Nome da revista, v. 1, n. 1, p. 1-10, 2024. Disponível em: ${currentUrl}. Acesso em: ${getCurrentDate()}.`;
 
   const [isCopied, setIsCopied] = useState(false);
   const textToCopyRef = useRef<HTMLParagraphElement>(null);

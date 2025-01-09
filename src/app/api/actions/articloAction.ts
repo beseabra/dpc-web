@@ -27,3 +27,44 @@ export async function createArticle(formData: FormData) {
 
   return article;
 }
+
+export async function updateArticle(articleId: string, formData: FormData) {
+  const title = formData.get("title") as string;
+  const subtitle = formData.get("subtitle") as string;
+  const articleContent = formData.get("article") as string;
+  const image = formData.get("image") as string;
+
+  // Se as keywords forem enviadas como uma string separada por vírgulas, converta para array
+  const keywordsString = formData.get("keywords") as string;
+  const keywords = keywordsString.split(",").map((keyword) => keyword.trim());
+
+  const updatedArticle = await prisma.article.update({
+    where: { id: articleId },
+    data: {
+      title,
+      subtitle,
+      article: articleContent,
+      image,
+      keywords,
+    },
+  });
+
+  return updatedArticle;
+}
+
+export async function getArticle() {
+  const articles = await prisma.article.findMany();
+  return articles;
+}
+
+export async function getArticleById(articleId: string) {
+  const article = await prisma.article.findUnique({
+    where: { id: articleId },
+    include: {
+      author: true,
+      coAuthors: true,
+    },
+  });
+
+  return article;
+}
