@@ -6,6 +6,9 @@ interface ArticleImageProps {
 }
 
 export default function ArticlesImageMagazine({ src, alt }: ArticleImageProps) {
+
+  console.log(src);
+  
   return (
     <div
       className={styles.containerImage}

@@ -40,7 +40,18 @@ export default function ArticlePostsHome() {
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
 
   const handlePageChange = (newPage: number) => {
@@ -65,14 +76,26 @@ export default function ArticlePostsHome() {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        padding: "16px",
+        maxWidth: "1200px",
+        margin: "0 auto",
+      }}
+      onClick={(event) => event.stopPropagation()} 
+    >
       <SearchComponent
         page={page}
         setPage={setPage}
         searchTerm={searchTerm}
         handleSearchChange={handleSearchChange}
       />
-      <ArticleListMagazine articlesPosts={filteredArticles.slice((page - 1) * itemsPerPage, page * itemsPerPage)} />
+      <ArticleListMagazine
+        articlesPosts={filteredArticles.slice(
+          (page - 1) * itemsPerPage,
+          page * itemsPerPage
+        )}
+      />
       <Pagination
         page={page}
         handlePageChange={handlePageChange}
