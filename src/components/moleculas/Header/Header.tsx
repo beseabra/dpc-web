@@ -21,29 +21,14 @@ export default function Header() {
     setLogin(false);
   };
 
+  const fetchUserPayload = async () => {
+    const userPayload = await sessionCookie();
+    setUser(userPayload?.type || "user");
+  };
+
   useEffect(() => {
-    const fetchUserPayload = async () => {
-      const userPayload = await sessionCookie();
-      setUser(userPayload?.type || "user");
-    };
-
     fetchUserPayload();
-
-    const handleClickOutside = (event: MouseEvent) => {
-      const modalContent = document.querySelector(`.${styles.modalContent}`);
-      if (login && modalContent && !modalContent.contains(event.target as Node)) {
-        closeLoginModal();
-      }
-    };
-
-    if (login) {
-      document.addEventListener("click", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [login]);
+  }, []);
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -71,7 +56,6 @@ export default function Header() {
           height={144}
           onClick={() => router.push("/")}
         />
-        {/* Menu para Desktop */}
         <div className={styles.menu}>
           {menuItems.map(
             (item) =>
@@ -93,13 +77,11 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Botão de Menu para Mobile */}
         <IconButton onClick={handleMenuClick} className={styles.menuButton}>
           <MenuIcon htmlColor="var(--text-color-secondary)" sx={{ fontSize: 80, padding: 7 }} />
         </IconButton>
       </div>
 
-      {/* Popover para Mobile */}
       <Popover
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}

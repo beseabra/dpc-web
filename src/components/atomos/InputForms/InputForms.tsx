@@ -8,6 +8,10 @@ interface InputFormsProps {
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  required?: boolean;
+  autoComplete?: string;
+  error?: boolean;
+  helperText?: string;
 }
 
 export default function InputForms({
@@ -18,6 +22,10 @@ export default function InputForms({
   name,
   onChange,
   disabled,
+  required = false,
+  autoComplete = "off",
+  error = false,
+  helperText = "",
 }: InputFormsProps) {
   return (
     <TextField
@@ -33,6 +41,11 @@ export default function InputForms({
       onChange={onChange}
       value={value}
       disabled={disabled}
+      required={required}
+      autoComplete={autoComplete}
+      error={error}
+      helperText={helperText}
+      onClick={(e) => e.stopPropagation()} 
     />
   );
 }
