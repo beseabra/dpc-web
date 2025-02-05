@@ -66,3 +66,29 @@ export async function getArticleById(articleId: string) {
 
   return article;
 }
+
+export async function getArticlesByStatus(status: string) {
+  const articles = await prisma.article.findMany({
+    where: { status },
+    include: {
+      author: true,
+      coAuthors: true,
+    },
+  });
+  return articles;
+}
+
+export async function updateArticleStatus(
+  articleId: string,
+  status: string,
+  publicationDate?: string
+) {
+  const updatedArticle = await prisma.article.update({
+    where: { id: articleId },
+    data: {
+      status,
+      publicationDate: publicationDate ? new Date(publicationDate) : null,
+    },
+  });
+  return updatedArticle;
+}
