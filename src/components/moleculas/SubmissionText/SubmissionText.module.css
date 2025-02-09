@@ -1,0 +1,24 @@
+.editor-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .toolbar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .toolbar button {
+    background: #eee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .toolbar button:hover {
+    background: #ddd;
+  }
+  

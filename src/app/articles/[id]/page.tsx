@@ -5,7 +5,6 @@ import { Prisma } from "@prisma/client";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import CoverArticle from "../../../components/atomos/CoverArticle/CoverArticle";
 import HowToCite from "../../../components/atomos/HowToCite/HowToCite";
 import styles from "./page.module.css";
 
@@ -54,14 +53,15 @@ export default function Articles() {
     return <p>Article not found</p>;
   }
 
+  console.log('articleTESTE', article.author.image);
+  
   return (
     <main>
       <div className={styles.containerArticle}>
-        {article.image && <CoverArticle src={article.image} alt={article.image} />}
+       
         <h1>{article.title}</h1>
         <h6>V.XX, N.XX, XXXX - Atual</h6>
-        <p>{article.article}</p>
-
+        <p dangerouslySetInnerHTML={{ __html: article.article }} />
         <Box className={styles.containerArticlesUser}>
           <div className={styles.imageProfile}>
             <Image
@@ -88,7 +88,7 @@ export default function Articles() {
             {article.coAuthors.map((coAuthor) => (
               <div key={coAuthor.id} className={styles.imageProfile}>
                 <Image
-                  src={coAuthor.image || ""}
+                  src={coAuthor.image || "/user.png"}
                   alt="user"
                   width={200}
                   height={200}

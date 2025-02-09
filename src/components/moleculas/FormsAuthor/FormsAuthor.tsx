@@ -10,7 +10,7 @@ import style from "./formsAuthor.module.css";
 interface IFormsAuthor {
   onSubmit: (authorData: Partial<User>) => void;
   isCoAuthor?: boolean;
-  autohorData?: Partial<User>;
+  authorData?: Partial<User>;
 }
 
 export default function FormsAuthor({ onSubmit, isCoAuthor }: IFormsAuthor) {

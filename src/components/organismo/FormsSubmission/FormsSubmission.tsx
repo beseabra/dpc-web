@@ -19,9 +19,9 @@ export default function FormsSubmission() {
     author: { name: "", lastName: "", email: "", phone: "", institution: "", lattes: "", graduation: "", photo: "" },
     coAuthor: { name: "", lastName: "", email: "", phone: "", institution: "", lattes: "", graduation: "", photo: "" },
     article: { title: "", subtitle: "", keywords: "", knowledgeArea: "", article: "" },
+    imageBanner: { url: "" },
   });
-  const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState<string | null>(null);
   const [userInfos, setUserInfos] = useState<User>();
 
   const fetchUserPayload = useCallback(async () => {
@@ -43,14 +43,19 @@ export default function FormsSubmission() {
     fetchUserPayload();
   }, [fetchUserPayload]);
 
-  const handleImageUpload = (url: string) => setProfileImageUrl(url);
+  const handleImageUpload = (url: string) => {
+    setSubmissionData((prevData) => ({
+      ...prevData,
+      imageBanner: { url },
+    }));
+  };
 
   const handleModalToggle = () => setOpen((prev) => !prev);
 
   const handleDataChange = (type: "author" | "coAuthor" | "article", updatedData: Partial<User> | Partial<Article>) => {
     setSubmissionData((prevData) => ({
       ...prevData,
-      [type]: updatedData,
+      [type]: { ...prevData[type], ...updatedData },
     }));
   };
 
@@ -65,12 +70,10 @@ export default function FormsSubmission() {
     formData.append("title", submissionData.article.title);
     formData.append("subtitle", submissionData.article.subtitle);
     formData.append("article", submissionData.article.article);
-    formData.append("authorId", user);
+    formData.append("authorId", user!);  // Adicionando a confirmação de que o user não é null
     formData.append("keywords", JSON.stringify(["keyword 1", "keyword 2"]));
     formData.append("coAuthors", JSON.stringify([submissionData.coAuthor]));
-    if (profileImageUrl) {
-      formData.append("image", profileImageUrl);
-    }
+    formData.append("image", submissionData.imageBanner.url);
 
     try {
       await createArticle(formData);
@@ -84,10 +87,10 @@ export default function FormsSubmission() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <FormsAuthor onSubmit={(data) => handleDataChange("author", data)} autohorData={userInfos} />
+        <FormsAuthor onSubmit={(data) => handleDataChange("author", data)} authorData={userInfos} />
         <FormsAuthor onSubmit={(data) => handleDataChange("coAuthor", data)} isCoAuthor />
         <FormsArticle onChange={(data) => handleDataChange("article", data)} />
-        <ImagePicker id="bannerImages" name="bannerImages" label="bannerImages" onImageUpload={handleImageUpload} bucketRoute="public/bannerImages/" />
+        <ImagePicker id="image" name="image" label="bannerImages" onImageUpload={handleImageUpload} bucketRoute="public/bannerImages/" />
         <div className={style.containerCheck}>
           <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} />
           <p>

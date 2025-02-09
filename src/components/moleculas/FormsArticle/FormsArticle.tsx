@@ -38,20 +38,13 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
     });
   };
 
+  const [articleContent, setArticleContent] = useState("");
+
   const handleContentChange = (content: string) => {
-    setInfosForms((prevData) => {
-      const updatedData = { ...prevData, article: content };
-
-      onChange({
-        title: updatedData.title,
-        subtitle: updatedData.subtitle,
-        article: updatedData.article,
-        keywords: updatedData.keywords.split(',').map(keyword => keyword.trim()),
-        references: updatedData.refs.split(',').map(ref => ref.trim()),
-      });
-
-      return updatedData;
-    });
+    setArticleContent(content);
+    console.log("Artigo", content);
+    
+    onChange({ article: content });
   };
 
   return (
@@ -89,9 +82,8 @@ export default function FormsArticle({ onChange }: IFormsArticle) {
         />
         <TitleReferences title="Corpo do artigo:" />
         <SubmissionText onChange={handleContentChange} />
-        {infosForms.article && (
-          <div dangerouslySetInnerHTML={{ __html: infosForms.article }}></div>
-        )}
+        <h4>Preview:</h4>
+        <div dangerouslySetInnerHTML={{ __html: articleContent }} />
       </div>
       <TitleReferences title="Referências no formato ABNT:" />
       <SubmissionText onChange={handleContentChange} />
